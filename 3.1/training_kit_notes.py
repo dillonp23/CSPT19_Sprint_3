@@ -26,8 +26,8 @@ Objective 1: Properties of Binary and "Perfect" Trees
         1. each levels nodes double as we increment down the length of the tree:
             
                 level 0 = 1 (2^0)            o          <---- "root"
-                level 1 = 2 (2^1)          o ^ o
-                level 2 = 4 (2^2)        o^o   o^o
+                level 1 = 2 (2^1)          o ^ o     
+                level 2 = 4 (2^2)        o^o   o^o    
                 level 3 = 8 (2^3)     o^o o^o o^o o^o   <---- "leaves"
 
                     * total number of nodes in tree = 15
@@ -83,3 +83,86 @@ print(height)
 height = 8
 n = (2**height) - 1
 print(n)
+
+
+
+
+"""
+Objective 2: Time & Space Complexity, Strengths & Weaknesses, and Common Uses of Binary Search Trees
+
+* One common type of a binary tree is a Binary Search Tree (BST)
+    - BST's are binary trees that follow specific rules about how the nodes are stored
+        - in BST's, all nodes to left are smaller and all nodes to right are larger
+    
+    * BST is "balanced":
+        1. if height of left and right subtrees differ <= 1 
+        2. if both of subtrees are balanced as well
+
+        * examples:
+
+              o       
+            o ^ o         <<== balanced
+          o^o   o^o             - same depth on both branches
+        o^o    o' 'o            - left branch: left side of subtree only one level deeper
+                                - right branch: same depth each side even though left/right only 1 node each
+
+              o       
+            o ^ o         <<== unbalanced
+                 `o             - greater than 1 level deeper on right branch
+                   `o
+
+
+
+    * Time Complexity
+
+        * Lookups: O(log n) or O (n)
+            - balanced BST => O(log n)
+            - unbalanced BST => O(n) in worst case
+                - if entirely unbalanced, virtually all nodes on one side in a linear fashion
+                
+        * Insert: O(log n) or O (n)
+            - balanced BST => O(log n)
+            - unbalanced BST => O(n) in worst case
+
+        * Delete: O(log n) or O (n)
+            - balanced BST => O(log n)
+            - unbalanced BST => O(n) in worst case
+
+
+    * Space Complexity
+
+        * O(n)
+            - each node takes up space in memory
+
+
+    * Strengths:
+        - primary strength of BST is that its sorted by default
+            - can pull out data in order using an in-order traversal
+        - effecient searches
+            - O(log n)
+            - same as sorted array
+        - faster insertions/deletions than sorted arrays
+
+        * BST vs Dictionaries:
+            - In average-case dictionaries have more efficient operations
+            - BST's have more efficient operations in worst cases
+
+
+    * Weaknesses:
+        - only efficient operations if they're balanced
+            - more unbalanced == worsening operation efficienies
+        - don't have exceptional efficieny in any one operation
+            - decent efficiency for a number of diff. operations == good general-purpose data structure 
+
+
+
+    * Challenege question: Why does an unbalanced BST's performance degrade?
+
+        - answer: the more unbalanced a BST becomes, the more closely the tree resembles a 
+                linear data structure. As such the benefits of O(log n) operations are degraded. 
+                In a perfectly balanced BST, with each iteration of an operation, the amount of 
+                data that needs to be processed can be cut in half. Therefore the rate of growth 
+                for time complexity gets smaller with each iteration. Unbalanced BST's lose this 
+                benefit, so time complexity is closer to linear in the worst case vs. logarithmic
+                in the best case with a balanced BST.
+"""
