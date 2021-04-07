@@ -77,3 +77,30 @@ Given the root of a binary tree, return the level order traversal of its nodes' 
     Input: root = []
     Output: []
 """
+
+
+
+
+"""
+* Variations of Binary Trees
+
+* BST's
+    - BST are ordered ==>> left.val < current.val < right.val
+    - in order to be a BST, left and right subtrees must also be BST's
+    - if a problem mentions "BST" you should make use of its properties to get optimal solution
+        - balanced BST gives O(log n) for search, insert, and delete operations
+        - non-balanced BST gives O(n) operations
+
+
+    * use an "in-order" traversal (left, current, right) with BST ==> get entire tree in ascending order
+    * use a "reverse in-order" traversal (right, current, left)  ==> get enitre tree in descending order
+
+
+* "Perfect" Binary tree ==> every level is completely full
+    - each node in tree has either 2 children or none
+    - every perfect binary tree is balanced, but not all balanced binary trees are prefect!
+
+
+* "Degenerate" Binary Tree ==>> every node has at most 1 child
+    - usually why time/space complexity is O(n)
+"""
