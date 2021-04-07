@@ -233,6 +233,11 @@ class BSTNode:
             else:
                 return self.right.search(target)
 
+    # challenge: implement delete method
+    def delete(self, value):
+        pass
+
+
 
 class BST:
     def __init__(self, value):
@@ -243,3 +248,7 @@ class BST:
 
     def search(self, value):
         self.root.search(value)
+
+    # challenge: implement delete method
+    def delete(self, value):
+        self.root.delete(value)
