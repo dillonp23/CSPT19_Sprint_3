@@ -49,3 +49,31 @@ def postOrderTraversalHelper(self, currNode, res):
         self.postOrderTraversalHelper(currNode.right, res)
 
     res.append(currNode.val)
+
+
+
+
+"""
+* Breadth-First Search
+    - "level order" traversal
+    - can implement using a queue
+        - everything in queuue will be represented as a single level of tree
+
+    * keywords: level, row, closest, minimum, width, diameter
+
+
+
+Exercise 2: "102. Binary Tree Level Order Traversal" (https://leetcode.com/problems/binary-tree-level-order-traversal/)
+
+Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+
+* Examples:
+    Input: root = [3,9,20,null,null,15,7]
+    Output: [[3],[9,20],[15,7]]
+
+    Input: root = [1]
+    Output: [[1]]
+
+    Input: root = []
+    Output: []
+"""
