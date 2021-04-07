@@ -104,3 +104,23 @@ Given the root of a binary tree, return the level order traversal of its nodes' 
 * "Degenerate" Binary Tree ==>> every node has at most 1 child
     - usually why time/space complexity is O(n)
 """
+
+
+
+
+"""
+Exercise 3: "98. Validate Binary Search Tree (https://leetcode.com/problems/validate-binary-search-tree/)
+
+Given the root of a binary tree, determine if it is a valid binary search tree (BST).
+
+A valid BST is defined as follows:
+
+The left subtree of a node contains only nodes with keys less than the node's key.
+The right subtree of a node contains only nodes with keys greater than the node's key.
+Both the left and right subtrees must also be binary search trees.
+ 
+
+* Example 1:
+    Input: root = [2,1,3]
+    Output: true
+"""
