@@ -166,3 +166,37 @@ Objective 2: Time & Space Complexity, Strengths & Weaknesses, and Common Uses of
                 benefit, so time complexity is closer to linear in the worst case vs. logarithmic
                 in the best case with a balanced BST.
 """
+
+
+
+
+"""
+Objective 3: Constructing Binary Search Trees
+
+
+Highlights of BST Implementation:
+
+    * Two classes:
+        1. node (BSTNode)
+            a. properties:
+                - value
+                - left (node)
+                - right (node)
+
+            b. operations:
+                - insert(value)
+                - search(value)
+
+
+        2. tree (BST)
+            a. properties:
+                - root (node)
+
+            b. operations:
+                - insert(value)
+                - search(value)
+
+    
+    * Important characteristics of nodes in BST:
+        - left.value < parent.value < right.value
+"""
