@@ -202,7 +202,8 @@ def postorderHelper(parent, res):
     if parent.right:
         postorderHelper(parent.right, res)
     
-    return res.append(parent.value)
+    # append value of current node, will unwind call stack
+    res.append(parent.value)
 
 
 
@@ -236,8 +237,24 @@ Given the root of a binary tree, return the inorder traversal of its nodes' valu
 """
 
 def inOrderTraversal(root):
-    pass
+    res = []
+    inOrderHelper(root, res)
+    return res
 
+
+def inOrderHelper(parent, res):
+    # base case
+    if parent is None:
+        return
+
+    # in order = left->parent->right
+    if parent.left:
+        inOrderHelper(parent.left, res)
+    
+    res.append(parent.value)
+
+    if parent.right:
+        inOrderHelper(parent.right, res)
 
 
 
