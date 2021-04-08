@@ -388,6 +388,22 @@ Given the root of a binary tree, return the level order traversal of its nodes' 
     - repeat
 """
 
+from collections import deque
+
+def levelOrder(self, root: TreeNode) -> List[List[int]]:
+    # returning a nested list ~ [[root], [l0,l0], [l1,l1,l1,l1]]
+    queue = deque()
+    queue.append(root)
+    queue_count = 1
+    res = []
+    levelOrderHelper(queue, queue_count, res)
+
+    return res
+
+
+def levelOrderHelper(queue, queue_count, res):
+    pass
+
 
 
 
