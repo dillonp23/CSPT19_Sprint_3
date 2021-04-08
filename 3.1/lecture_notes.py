@@ -34,11 +34,106 @@ Sprint 3.1 - Binary Trees & Binary Search Trees
 
             * BST example:
 
-                    6
-                   / \
-                 4     9
-                / \   / \
-               2   5 7   11
+                    6       
+                   / \      
+                 4     9    
+                / \   / \   
+               2   5 7   11  
+
+
+    * Visualizing Trees:
+        - ability to recognize the structural representation of a binary tree can aid in algos
+        - balanced trees are more efficient ~ O(log n)
+        - unbalanced trees less efficient ~ O(n)
+        - certain tree structures can be useful when planning test cases and edge cases
+        - visualizing helps when setting base cases in your solutions
+
+
+    * Tree Traversals:
+        - necessary in any binary tree problem
+        - methods of traversal:
+
+            1. Depth-First Search (DFS)
+                a. in-order
+                b. pre-order
+                c. post-order
+
+            2. Breadth-First Search (BFS)
+                a. level-order
+
+
+    * Depth-First (DFS) Traversals:
+        - keywords = max, deepest, longest
+        - DFS can be helpful if problem requires you to get to leaf node to do something
+            - just a general idea, there are exceptions
+
+            1. In-order:
+                - one side first
+                - nodes in sorted ascending/descending order if a BST
+                - start by traversing down entire left or right branch
+                - after reaching end of left/right branch -> traverse up
+                - for each level:
+                    - process parent
+                    - then right (or left if reverse in-order)
+                    - repeat
+
+                a. "in-order" = process nodes in ascending order
+                    * left -> current -> right
+
+                b. "reverse in-order" = process nodes in descending order
+                    * right -> current -> left
+
+                * Hint: processes tree in a "side-to-side" fashion
+                    - first element is left-most or right-most leaf of tree
+                    - last element is opposite most leaf to first
+
+
+            2. Pre-order:
+                - parent or "inside" first
+                - parent -> entire left branch -> entire right branch
+                - if reverse: right branch before left branch
+
+                a. "pre-order"
+                    * current -> left -> right
+
+                b. "reverse pre-order"
+                    * current -> right -> left
+
+                * Hint: processes branches in a "down-and-over" fashion
+                    - first element is top most node of tree (i.e. root)
+                    - last element is either left-most or right-most leaf
+
+
+            3. Post-order:
+                - children or "outside" first
+                - entire left branch -> entire right branch -> parent
+                - if reverse: right branch before left branch
+
+                a. "post-order"
+                    * left -> right -> current
+
+                b. "reverse post-order"
+                    * right -> left -> current
+
+                * Hint: processes branches in a "out-and-up" fashion
+                    - first element is left-most or right-most leaf of tree
+                    - last element is top-most node of tree (i.e. root)
+
+
+        
+    * Determine the in-order, pre-order, and post-order sequence for the following tree:
+
+                 5       
+                / \      
+              7     9    
+             /     / \   
+            10    20  11 
+
+        1. in-order = 10,7,5,20,9,11
+
+        2. pre-order = 5,7,10,9,20,11
+
+        3. post-order = 10,7,20,11,9,5
 """
 
 
