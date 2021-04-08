@@ -151,32 +151,45 @@ Given the root of a binary tree, return the postorder traversal of its nodes' va
 
     Input: root = [1]
     Output: [1]
+
+    Input: root = [1,2]
+    Output: [2,1]
+
+    Input: root = [1,null,2]
+    Output: [2,1]
+
+
+* UPER - Plan:
+    keywords: postorder
+
+    - rather than use a pointer to a child's parent node, we will use recursion
+    - call stack will keep any object references we need
+    - doing post-order, so our recursive cases will be called in proper order
+        - i.e. left recursive case first, then right
 """
 
-class BSTNode:
+class TreeNode:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
 
-    # Post order traversal = process left first, then right, then parent
-    def postorderTraversal(self, root: TreeNode) -> List[int]:
-        res = []
-        self.postOrderTraversalHelper(root, res)
-        return res
-    
-    def postOrderTraversalHelper(self, currNode, res):
-        if currNode == None:
-            return
+# Post order traversal = left->right->parent
+def postOrderTraversal(root):
+    pass
 
-        if currNode.left != None:
-            self.postOrderTraversalHelper(currNode.left, res)
+    # return [int]
 
-        if currNode.right != None:
-            self.postOrderTraversalHelper(currNode.right, res)
+def postorderHelper(parent, res):
+    # base case(s):
+    # in this problem, when would we need to stop recursive calls?
 
-        res.append(currNode.val)
+    # recursive cases:
+    # 1. left child
 
+    # 2. right child
+
+    return res
 
 
 
