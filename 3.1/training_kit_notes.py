@@ -201,6 +201,35 @@ Highlights of BST Implementation:
         - left.value < parent.value < right.value
 """
 
+"""
+Exercise 1: 
+
+Plan out (in pseudocode) what steps are needed to delete a node from a BST.
+
+- deleting a node is essentially updating the node to be the next in-order node
+    - the nodes "successor" is first in-order
+    - if the successor is the root, then the deleted nodes left child will replace its spot
+    - if deleting a leaf, next in-order will be None
+
+3 cases:
+    1. node has no children
+    2. node has one child (left or right)
+    3. node has both children
+
+
+- if node has both children, we need to find the next in-order node
+    - first in-order node will be the right node
+    - if right node has no children, it moves to location of deleted node
+- if right node has a left child:
+    - recursively check if node has a left child, until we get the value that is 
+    greater than deleted node, but less than all other nodes descendant of deleted_node.right 
+        - i.e. deepest (least value) left child thats a descendant of deleted node's right
+- if right node only has a right node child, new node becomes right node
+- continue checking until we reach first in order node
+- i.e. until we reach a node with only a right child, or a node with no child
+- we iterate continually down the left branch of deleted node.right, until we get to node thats replacing it
+"""
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
