@@ -3,9 +3,42 @@
 """
 Sprint 3.1 - Binary Trees & Binary Search Trees
 
-* Binary Trees are comprised of nodes, subtrees, and leaves
-    - parent node can have up to 2 child nodes - left or right
+* Binary Trees:
+    - comprised of nodes, subtrees, children and leaves
+    - each parent node can have up to 2 children - left and/or right
     - leaves are nodes with no children
+
+
+    * Highlights of Binary Trees:
+        - top most node = root
+        - node with no children = leaf
+
+
+    * Properties & Defining Characteristics:
+        - balanced
+            - a tree is "balanced" if there is a max height difference of one child at all levels
+        - complete
+            - a tree is "complete" if all levels are either completely filled with two
+                children per parent, or if tree is only missing right children at the last level
+        - perfect
+            - a tree is "perfect" if every parent node has two children, and all leaves are at
+                the same level
+                - if leaves are not at same level then this tree could still be 'complete'
+    
+
+    * Binary Tree Subtypes:
+        - Binary Search Tree (BST)
+            - a tree in which entire tree follows a specific pattern/order:
+
+                left_child < parent < right_child
+
+            * BST example:
+
+                    6
+                   / \
+                 4     9
+                / \   / \
+               2   5 7   11
 """
 
 
@@ -31,24 +64,23 @@ class BSTNode:
         self.left = None
         self.right = None
 
-# Post order traversal = process left first, then right, then parent
-def postorderTraversal(self, root: TreeNode) -> List[int]:
-    res = []
-    self.postOrderTraversalHelper(root, res)
-    return res
+    # Post order traversal = process left first, then right, then parent
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        res = []
+        self.postOrderTraversalHelper(root, res)
+        return res
     
-    
-def postOrderTraversalHelper(self, currNode, res):
-    if currNode == None:
-        return
+    def postOrderTraversalHelper(self, currNode, res):
+        if currNode == None:
+            return
 
-    if currNode.left != None:
-        self.postOrderTraversalHelper(currNode.left, res)
+        if currNode.left != None:
+            self.postOrderTraversalHelper(currNode.left, res)
 
-    if currNode.right != None:
-        self.postOrderTraversalHelper(currNode.right, res)
+        if currNode.right != None:
+            self.postOrderTraversalHelper(currNode.right, res)
 
-    res.append(currNode.val)
+        res.append(currNode.val)
 
 
 
