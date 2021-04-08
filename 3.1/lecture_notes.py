@@ -174,22 +174,31 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 # Post order traversal = left->right->parent
 def postOrderTraversal(root):
-    pass
+    res = []
+    postorderHelper(root, res)
+    return res
 
-    # return [int]
 
 def postorderHelper(parent, res):
     # base case(s):
-    # in this problem, when would we need to stop recursive calls?
+    # think: "when do I need to stop recursive calls?"
+    if parent is None:
+        return
 
-    # recursive cases:
+    # recursive cases, post-order so left first:
     # 1. left child
+    if parent.left:
+        postorderHelper(parent.left, res)
 
     # 2. right child
+    if parent.right:
+        postorderHelper(parent.right, res)
+    
+    return res.append(parent.value)
 
-    return res
 
 
 
