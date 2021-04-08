@@ -402,7 +402,40 @@ def levelOrder(self, root: TreeNode) -> List[List[int]]:
 
 
 def levelOrderHelper(queue, queue_count, res):
-    pass
+    nodes = []
+    level = []
+
+    # pop nodes from queue (corresponds to number of nodes in level)
+    while queue_count > 0:
+        node = queue.pop()
+        if node:
+            nodes.append(node)
+            level.append(node.val)
+            queue_count -= 1
+        else:
+            return
+        
+    if len(nodes) == 0:
+        return
+
+    for node in nodes:
+        # left->right each level - append left 1st
+        if node.left != None:
+            queue.appendleft(node.left)
+            queue_count += 1
+
+        if node.right != None:
+            queue.appendleft(node.right)
+            queue_count += 1
+
+    res.append(level)
+
+    if queue_count > 0:
+        levelOrderHelper(queue, queue_count, res)
+
+
+#   ^^^    For additonal practice:    ^^^
+#   - refactor above solution to use a tuple (parent, left, right) to reduce memory usage
 
 
 
