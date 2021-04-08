@@ -63,7 +63,9 @@ Sprint 3.1 - Binary Trees & Binary Search Trees
 
 
     * Depth-First (DFS) Traversals:
-        - keywords = max, deepest, longest
+
+        * keywords: max, deepest, longest
+
         - DFS can be helpful if problem requires you to get to leaf node to do something
             - just a general idea, there are exceptions
 
@@ -310,15 +312,56 @@ def preorderHelper(parent, res):
 
 
 """
-* Breadth-First Search
-    - "level order" traversal
-    - can implement using a queue
-        - everything in queuue will be represented as a single level of tree
+* Breadth-First (BFS) Traversals:
 
     * keywords: level, row, closest, minimum, width, diameter
 
 
+        1. Level-order:
+            - nodes sequenced based on level of tree they're in
+            - start with first level (l0) = root
+            - iterate down each level of the tree
+            - get nodes straight across from left to right
+                - get all nodes for level before moving to next level
 
+
+            a. "level-order" = process all nodes level by level
+                - standard is top level -> bottom level
+                - left side -> right side
+
+
+                    -> -> -> -> -> -> -> -> -> ->
+
+                l0:             root
+                l1:          lhs    rhs
+                l2:       lhs^rhs  lhs^rhs
+
+                    -> -> -> -> -> -> -> -> -> ->
+
+
+            b. "reverse level-order" traversal may be classified differently
+                depending on the problem, could mean either:
+                    * bottom level -> top level
+
+                            and/or
+
+                    * right side -> left side
+
+
+            * Hint: processes levels of tree in a "level-by-level" fashion
+                - first element in sequence is the root, last is bottom-right-most element
+
+
+
+    * Implementing a BFS with a queue:
+        - nodes in the queue will all be same level
+        - process all nodes before moving to next level
+"""
+
+
+
+
+"""
 Exercise 4: "102. Binary Tree Level Order Traversal" (https://leetcode.com/problems/binary-tree-level-order-traversal/)
 
 Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
