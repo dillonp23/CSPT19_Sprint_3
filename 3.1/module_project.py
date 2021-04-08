@@ -34,4 +34,44 @@ differ in height by a maximum of 1.
          8   8
     
     * return False
+
+
+* UPER - Plan:
+traverse tree using a breadth first approach
+at each level in tree, compare if there is a right and left child for nodes
+split children into two branches for each node
+no children
+    return
+one child
+    if its child also has a child return false
+both children
+    continue
 """
+
+class TreeNode:
+    def __init__(self, x):
+        self.value = x
+        self.left = None
+        self.right = None
+
+
+def balancedBinaryTree(root):
+    return isBalanced(root.left, root.right)
+
+def isBalanced(left, right):
+    if not left and not right:
+        return True
+
+    if not left:
+        if right.left or right.right:
+            return False
+
+    if not right:
+        if left.left or left.right:
+            return False
+
+    if left:
+        return isBalanced(left.left, left.right)
+
+    if right:
+        return isBalanced(right.left, right.right)
