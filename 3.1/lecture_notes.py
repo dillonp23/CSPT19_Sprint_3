@@ -288,8 +288,23 @@ Given the root of a binary tree, return the preorder traversal of its nodes' val
 """
 
 def preOrderTraversal(root):
-    pass
+    res = []
+    preorderHelper(root, res)
+    return res
 
+
+def preorderHelper(parent, res):
+    if parent is None:
+        return
+
+    # preorder = parent, left, right
+    res.append(parent.value)
+
+    if parent.left:
+        preorderHelper(parent.left, res)
+
+    if parent.right:
+        preorderHelper(parent.right, res)
 
 
 
