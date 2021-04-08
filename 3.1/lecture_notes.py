@@ -375,6 +375,17 @@ Given the root of a binary tree, return the level order traversal of its nodes' 
 
     Input: root = []
     Output: []
+
+
+* UPER - Plan:
+    * keywords: level order traversal, left to right, level-by-level
+
+    - implement using a deque
+    - start by adding root level to queue
+    - use iterative approach with a while loop
+    - pop nodes off queue and append to result array
+    - add all nodes for next level to queue
+    - repeat
 """
 
 
