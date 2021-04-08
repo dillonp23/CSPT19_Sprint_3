@@ -142,6 +142,11 @@ Exercise 1: "145. Binary Tree Postorder Traversal" (https://leetcode.com/problem
 
 Given the root of a binary tree, return the postorder traversal of its nodes' values.
 
+* Notes:
+    - Leetcode expresses binary trees as:
+
+        [root, left, right, left, right, left...]
+
 * Examples:
     Input: root = [1,null,2,3]
     Output: [3,2,1]
@@ -203,6 +208,76 @@ def postorderHelper(parent, res):
 
 
 """
+Exercise 2: "94. Binary Tree Inorder Traversal" (https://leetcode.com/problems/binary-tree-inorder-traversal/)
+
+Given the root of a binary tree, return the inorder traversal of its nodes' values.
+
+* Notes:
+    - Leetcode expresses binary trees as:
+
+        [root, left, right, left, right, left...]
+
+* Examples:
+
+    Input: root = [1,null,2,3]
+    Output: [1,3,2]
+
+    Input: root = []
+    Output: []
+
+    Input: root = [1]
+    Output: [1]
+
+    Input: root = [1,2]
+    Output: [2,1]
+
+    Input: root = [1,null,2]
+    Output: [1,2]   
+"""
+
+def inOrderTraversal(root):
+    pass
+
+
+
+
+
+"""
+Exercise 3: "94. Binary Tree Preorder Traversal" (https://leetcode.com/problems/binary-tree-preorder-traversal/)
+
+Given the root of a binary tree, return the preorder traversal of its nodes' values.
+
+* Notes:
+    - Leetcode expresses binary trees as:
+
+        [root, left, right, left, right, left...]
+
+* Examples:
+
+    Input: root = [1,null,2,3]
+    Output: [1,2,3]
+
+    Input: root = []
+    Output: []
+
+    Input: root = [1]
+    Output: [1]
+
+    Input: root = [1,2]
+    Output: [1,2]
+
+    Input: root = [1,null,2]
+    Output: [1,2]   
+"""
+
+def preOrderTraversal(root):
+    pass
+
+
+
+
+
+"""
 * Breadth-First Search
     - "level order" traversal
     - can implement using a queue
@@ -212,7 +287,7 @@ def postorderHelper(parent, res):
 
 
 
-Exercise 2: "102. Binary Tree Level Order Traversal" (https://leetcode.com/problems/binary-tree-level-order-traversal/)
+Exercise 4: "102. Binary Tree Level Order Traversal" (https://leetcode.com/problems/binary-tree-level-order-traversal/)
 
 Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
 
@@ -258,7 +333,7 @@ Given the root of a binary tree, return the level order traversal of its nodes' 
 
 
 """
-Exercise 3: "98. Validate Binary Search Tree (https://leetcode.com/problems/validate-binary-search-tree/)
+Exercise 5: "98. Validate Binary Search Tree (https://leetcode.com/problems/validate-binary-search-tree/)
 
 Given the root of a binary tree, determine if it is a valid binary search tree (BST).
 
