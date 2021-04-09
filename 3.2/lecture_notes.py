@@ -2,12 +2,7 @@
 
 """
 Sprint 3.2 Lecture Notes - Exploring Tree Traversals
-
-
-
 """
-
-
 
 
 """
@@ -47,83 +42,17 @@ from collections import deque
 
 # DFS using a stack
 def maxDepth(root):
-    if root is None:
-        return 0
-
-    stack = deque()
-    stack.append((root, 1))
-    maxDepth = 1
-
-    while len(stack) > 0:
-        curr = stack.pop()
-        currNode, currDepth = curr[0], curr[1]
-
-        maxDepth = max(maxDepth, currDepth)
-
-        if currNode.left:
-            stack.append((currNode.left, currDepth + 1))
-
-        if currNode.right:
-            stack.append((currNode.right, currDepth + 1))
-
-    return maxDepth
+    pass
 
 
-# Implement a second solution using level-order
 # BFS solution using a queue
 def maxDepthBFS(root):
-    if root is None:
-        return 0
-
-    queue = deque()
-    queue.append((root, 1))
-    maxDepth = 1
-
-    while len(queue) > 0:
-        curr = queue.popleft()
-        currNode, currDepth = curr[0], curr[1]
-
-        maxDepth = max(maxDepth, currDepth)
-
-        if currNode.left:
-            queue.append((currNode.left, currDepth + 1))
-
-        if currNode.right:
-            queue.append((currNode.right, currDepth + 1))
-
-    return maxDepth
-
-# Both of these solutions are O(n) and O(n)
+    pass
 
 
-# Implement a 3rd solution using recursion
-# In this solution we will use class methods and instance variables to automatically have maxDepth update
-class Solution:
-    def maxDepthRecursive(root):
-        if root is None:
-            return 0
-
-        self.maxDepth = 0
-        self.maxDepthHelper(root, 1)
-
-        return self.maxDepth
-
-
-    def maxDepthHelper(self, root, currDepth):
-        if not root.left and not root.right:
-            # check if we're at a depth greater than currently seen
-            self.max = max(currDepth, self.maxDepth)
-
-        if root.left:
-            self.maxDepthHelper(root.left, currDepth + 1)
-        
-        if root.right:
-            self.maxDepthHelper(root.right, currDepth + 1)
-
-
-    # This recursive solution is O(n) time and space complexity
-    # O(n) space for the actual call stack of functions
-        # essentially O(n) left + O(n) right ==> O(2n) == O(n)
+# Using recursion/call stack
+def maxDepthRecursive(root):
+    pass
 
 
 
