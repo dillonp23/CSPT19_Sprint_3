@@ -95,6 +95,39 @@ def maxDepthBFS(root):
 
 # Both of these solutions are O(n) and O(n)
 
+
+# Implement a 3rd solution using recursion
+# In this solution we will use class methods and instance variables to automatically have maxDepth update
+class Solution:
+    def maxDepthRecursive(root):
+        if root is None:
+            return 0
+
+        self.maxDepth = 0
+        self.maxDepthHelper(root, 1)
+
+        return self.maxDepth
+
+
+    def maxDepthHelper(self, root, currDepth):
+        if not root.left and not root.right:
+            # check if we're at a depth greater than currently seen
+            self.max = max(currDepth, self.maxDepth)
+
+        if root.left:
+            self.maxDepthHelper(root.left, currDepth + 1)
+        
+        if root.right:
+            self.maxDepthHelper(root.right, currDepth + 1)
+
+
+    # This recursive solution is O(n) time and space complexity
+    # O(n) space for the actual call stack of functions
+        # essentially O(n) for left then O(n) for right => O(2n) ==>> utlimately O(n)
+
+
+
+
 """
 Exercise: "230. Kth Smallest Element in a BST" (https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
 
