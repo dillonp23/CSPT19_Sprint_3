@@ -129,7 +129,7 @@ class Solution:
 
 
 """
-Exercise: "230. Kth Smallest Element in a BST" (https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
+Exercise 2: "230. Kth Smallest Element in a BST" (https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
 
 Given the root of a binary search tree, and an integer k, return the kth (1-indexed) smallest element in the tree.
 
@@ -151,39 +151,64 @@ Given the root of a binary search tree, and an integer k, return the kth (1-inde
         - k=3 ==> 3rd smallest element, etc, etc
     - remember this is a BST, so smallest elements to left, larger to right
     - utilize the properties of BST to get optimal solution
-
-    - start to left of tree
     - use an in-order traversal ==> will give us the elements in ascending order
     - start by going all the way down to left, once we can't anymore, traverse back up tree
     - use a count to track the nodes on way back up, when count == k return that nodes value
+
+    * Step 1: get smallest element of tree
+    - store a count variable starting at 0
+    - while there is a left child, iterate down to left child and repeat
+    - starting from root, traverse down to left most node and continue updating
+    - if root has no left child, then root will be the smallest element of tree
+    - once we get to smallest element (or if smallest is root), increment count += 1
+
+    * Step 2: base case
+    - if k == count:
+        return node.val
+    
+    * Step 3: recursive cases
+    - use knowledge of BST's left < parent < right
+    - write recursive cases using this knowledge
+
+        * 3a: left (recursive case 1)
+            - check if current node has left child
+            - recursive call with left child
+
+        * 3b: parent
+            - first increment count
+            - if count == k:
+                return parent.value
+        
+        * 3a: left (recursive case 2)
+            - check if current node has right child
+            - recursive call with right child
+
+    * Step 4: End of Function
+    - if we get here then there's no kth value in tree
+    - return None
 """
 
-class BST:
+class BSTNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
 
+
+class Solution:
     def kthSmallest(self, root, k):
-        self.curr = 0
-        return self.kthHelper(root, k)
+        pass
 
-    def kthHelper(self, root, k):
-        # 1st recursive case
-        if root.left:
-            leftSubtree = self.kthHelper(root.left, k)
 
-            if leftSubtree != None:
-                return leftSubtree
-        
-        self.curr += 1
-        
-        # base case
-        if self.curr == k:
-            return root.val
+    def kthHelper(self, parent, k):
+        pass
 
-        # 2nd recursive case
-        if root.right:
-            rightSubtree = self.kthHelper(root.right, k)
 
-            if rightSubtree != None:
-                return rightSubtree
 
-        
-        return None
+
+
+
+
+
+
+
