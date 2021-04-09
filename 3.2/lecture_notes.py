@@ -45,6 +45,7 @@ A binary tree's maximum depth is the number of nodes along the longest path from
 
 from collections import deque
 
+# DFS using a stack
 def maxDepth(root):
     if root is None:
         return 0
@@ -69,9 +70,30 @@ def maxDepth(root):
 
 
 # Implement a second solution using level-order
+# BFS solution using a queue
 def maxDepthBFS(root):
-    pass
+    if root is None:
+        return 0
 
+    queue = deque()
+    queue.append((root, 1))
+    maxDepth = 1
+
+    while len(queue) > 0:
+        curr = queue.popleft()
+        currNode, currDepth = curr[0], curr[1]
+
+        maxDepth = max(maxDepth, currDepth)
+
+        if currNode.left:
+            queue.append((currNode.left, currDepth + 1))
+
+        if currNode.right:
+            queue.append((currNode.right, currDepth + 1))
+
+    return maxDepth
+
+# Both of these solutions are O(n) and O(n)
 
 """
 Exercise: "230. Kth Smallest Element in a BST" (https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
