@@ -138,7 +138,51 @@ Given the root of a binary search tree, and an integer k, return the kth (1-inde
     Input: root = [3,1,4,null,2], k = 1
     Output: 1
 
-
     Input: root = [5,3,6,2,4,null,null,1], k = 3
     Output: 3
+
+
+* UPER - Plan:
+
+    * keywords: BST, smallest, 1-indexed
+
+    - the kth smallest index, i.e. if given k=1, return the smallest element
+        - k=2 ==> second smallest element
+        - k=3 ==> 3rd smallest element, etc, etc
+    - remember this is a BST, so smallest elements to left, larger to right
+    - utilize the properties of BST to get optimal solution
+
+    - start to left of tree
+    - use an in-order traversal ==> will give us the elements in ascending order
+    - start by going all the way down to left, once we can't anymore, traverse back up tree
+    - use a count to track the nodes on way back up, when count == k return that nodes value
 """
+
+class BST:
+
+    def kthSmallest(self, root):
+        self.curr = 0
+        return self.kthHelper(root, k)
+
+    def kthHelper(self, root, k):
+        # 1st recursive case
+        if root.left:
+            leftSubtree = self.kthHelper(root.left, k)
+
+            if leftSubtree:
+                return leftSubtree
+        
+        self.curr += 1
+        
+        # base case
+        if self.curr == k:
+            return root.val
+
+        # 2nd recursive case
+        if root.right:
+            rightSubtree = self.kthHelper(root.right, k)
+
+            if rightSubtree:
+                return rightSubtree
+        
+        return 0
