@@ -492,12 +492,38 @@ Given the root of a binary tree, determine if it is a valid binary search tree (
     - right subtree of a node contains only nodes with keys greater than the node's key
     - both the left and right subtrees must also be binary search trees
  
-
 * Examples:
     Input: root = [2,1,3]
     Output: true
 
     Input: root = [5,1,4,null,null,3,6]
     Output: false
-    Explanation: The root node's value is 5 but its right child's value is 4.
+    Explanation: The root node's value is 5 but its right child's value is 4
+
+
+* UPER - Plan:
+    * keywords: BST, valid
+
+    - valid BST in context of this prompt means tree nodes from left->right == least->greatest
+    - we can use a "valid range" to assert entire tree follows valid BST pattern
+    - start with root
+    - use a depth-first traversal
+        - can do iteratively using a Stack
+        - can also do recursively and utilize call-stack
+    - root has initial valid range from -inf to inf ==>> (float("-inf"),float("inf"))
+    - first ensure parent is between upper/lower bounds (exclusive)
+        - range w/ parentheses "(lower,upper)" = exclusive vs. brackets "[lower,upper]" = inclusive
+    - update lower or upper bound according to parents value
+        - if left child ==> (float("-inf"),parent)
+            - i.e. if moving to the left, child inherits parents lower bound
+            - parent becomes upper bound
+        - if right child ==> (parent,float("inf"))
+            - i.e. if moving to the right, child inherits parents upper bound
+            - parent becomes lower bound
+    - iterate to next node and check if within bounds
+        - if not, temrinate early and return False
+    - if we get to end of function then return True
 """
+
+def isValidBST(root):
+    pass
