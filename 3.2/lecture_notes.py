@@ -160,7 +160,7 @@ Given the root of a binary search tree, and an integer k, return the kth (1-inde
 
 class BST:
 
-    def kthSmallest(self, root):
+    def kthSmallest(self, root, k):
         self.curr = 0
         return self.kthHelper(root, k)
 
@@ -169,7 +169,7 @@ class BST:
         if root.left:
             leftSubtree = self.kthHelper(root.left, k)
 
-            if leftSubtree:
+            if leftSubtree != None:
                 return leftSubtree
         
         self.curr += 1
@@ -182,7 +182,8 @@ class BST:
         if root.right:
             rightSubtree = self.kthHelper(root.right, k)
 
-            if rightSubtree:
+            if rightSubtree != None:
                 return rightSubtree
+
         
-        return 0
+        return None
