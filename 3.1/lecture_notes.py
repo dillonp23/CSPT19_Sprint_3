@@ -441,27 +441,42 @@ def levelOrderHelper(queue, queue_count, res):
 
 
 """
-* Variations of Binary Trees
+* Characteristics & Subtypes of Binary Trees
 
-* BST's
+* Binary Search Trees (BST's)
     - BST are ordered ==>> left.val < current.val < right.val
-    - in order to be a BST, left and right subtrees must also be BST's
+    - in order to be a BST, left and right subtrees must also be BSTs
+    - for a BST root:
+        - the left child to root AND all of its descendants, must be < root.val
+        - the right child to root AND all of its descendants, must be > root.val
     - if a problem mentions "BST" you should make use of its properties to get optimal solution
         - balanced BST gives O(log n) for search, insert, and delete operations
         - non-balanced BST gives O(n) operations
 
 
-    * use an "in-order" traversal (left, current, right) with BST ==> get entire tree in ascending order
-    * use a "reverse in-order" traversal (right, current, left)  ==> get enitre tree in descending order
+    * use an "in-order" traversal (left, current, right) w/ BST ==> get entire tree in ascending order
+    * use a "reverse in-order" traversal (right, current, left) w/BST  ==> get entire tree in descending order
 
 
-* "Perfect" Binary tree ==> every level is completely full
+* "Perfect" Binary tree ==> every level is completely full, and all leaves on same level
     - each node in tree has either 2 children or none
+    - perfect trees have subtrees that terminate at same level 
     - every perfect binary tree is balanced, but not all balanced binary trees are prefect!
+    - if leaves are not at same level then this tree could still be 'complete'
 
 
 * "Degenerate" Binary Tree ==>> every node has at most 1 child
+    - no nodes in tree have two children
+    - essentially equivalent to a linked list 
     - usually why time/space complexity is O(n)
+
+
+* Other Defining Characteristics:
+        - balanced
+            - a tree is "balanced" if there is a max height difference of one child at all levels
+        - complete
+            - a tree is "complete" if all levels are either completely filled with two
+                children per parent, or if tree is only missing right children at the last level                
 """
 
 
