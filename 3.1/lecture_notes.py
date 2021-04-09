@@ -356,6 +356,25 @@ def preorderHelper(parent, res):
     * Implementing a BFS with a queue:
         - nodes in the queue will all be same level
         - process all nodes before moving to next level
+
+
+    
+    * Key differences between DFS and BFS implementations:
+        - BFS built on queues (FIFO)
+        - DFS built on stacks (LIFO)
+
+        - BFS one vertex selected at a time when visited and marked for queue - slower than DFS
+        - DFS only requires reference to parent/children and not the entire tree
+
+        - BFS is a vertex based technique
+            - useful for finding the shortest path in a graph
+            - useful when search near the source
+            - not great for games & puzzles
+
+        - DFS is an edge based technique
+            - divide and conquer
+            - useful when search far from source
+            - good solution for games and puzzles
 """
 
 
