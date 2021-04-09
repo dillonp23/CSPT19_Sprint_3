@@ -142,8 +142,7 @@ Given the root of a binary search tree, and an integer k, return the kth (1-inde
     Output: 3
 
 
-* UPER - Plan:
-
+* Understand:
     * keywords: BST, smallest, 1-indexed
 
     - the kth smallest index, i.e. if given k=1, return the smallest element
@@ -151,41 +150,47 @@ Given the root of a binary search tree, and an integer k, return the kth (1-inde
         - k=3 ==> 3rd smallest element, etc, etc
     - remember this is a BST, so smallest elements to left, larger to right
     - utilize the properties of BST to get optimal solution
-    - use an in-order traversal ==> will give us the elements in ascending order
-    - start by going all the way down to left, once we can't anymore, traverse back up tree
-    - use a count to track the nodes on way back up, when count == k return that nodes value
 
-    * Step 1: get smallest element of tree
-    - store a count variable starting at 0
-    - while there is a left child, iterate down to left child and repeat
-    - starting from root, traverse down to left most node and continue updating
-    - if root has no left child, then root will be the smallest element of tree
-    - once we get to smallest element (or if smallest is root), increment count += 1
+* Plan:
+    - in-order traversal ==> get elements in ascending order
+    - traverse down to left most node before incrementing count
+    - store recursive call as a temp variable to recurse back up
+    - use a count to track the nodes on way back up
+    - when count == k, return curr nodes val 
 
-    * Step 2: base case
-    - if k == count:
-        return node.val
-    
-    * Step 3: recursive cases
-    - use knowledge of BST's left < parent < right
-    - write recursive cases using this knowledge
+    * Primary function:
+        - prepare for recursive helper function
+        - k is 1-indexed
+        - so if k == 0 or if root is None
+            ==>> return None
+        - declare a count instance variable starting at 0
+        - return helperFunc(root, k)
 
-        * 3a: left (recursive case 1)
+    * Helper function (recursive):
+        - if root has no left child, then its the smallest element of tree
+        - otherwise get smallest element by traversing to left most node
+        - increment count back up tree
+        - implement recursive call stack in order left->parent->right
+        - count won't start incrementing until at smallest possible node
+
+        * Step 1: recursive case 1 (left)
             - check if current node has left child
-            - recursive call with left child
+            - store recursive call for left child in temp var
+            - return temp var if != None 
 
-        * 3b: parent
-            - first increment count
-            - if count == k:
-                return parent.value
-        
-        * 3a: left (recursive case 2)
+        * Step 2: self.count += 1
+
+        * Step 3: base case (if curr node is kth element)
+            - if k == count:
+                - return node.val
+            
+        * Step 4: right (recursive case 2)
             - check if current node has right child
-            - recursive call with right child
+            - store recursive call for right child in temp var
+            - return temp var if != None
 
-    * Step 4: End of Function
-    - if we get here then there's no kth value in tree
-    - return None
+        * Step 5: If curr node is a leaf return
+            - return None
 """
 
 class BSTNode:
@@ -202,9 +207,6 @@ class Solution:
 
     def kthHelper(self, parent, k):
         pass
-
-
-
 
 
 
