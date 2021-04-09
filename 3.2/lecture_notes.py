@@ -123,7 +123,7 @@ class Solution:
 
     # This recursive solution is O(n) time and space complexity
     # O(n) space for the actual call stack of functions
-        # essentially O(n) for left then O(n) for right => O(2n) ==>> utlimately O(n)
+        # essentially O(n) left + O(n) right ==> O(2n) == O(n)
 
 
 
@@ -202,14 +202,35 @@ class BSTNode:
 
 class Solution:
     def kthSmallest(self, root, k):
-        pass
+        if root is None or k == 0:
+            return None
+
+        # instance var stores count (eliminates need to pass recursively)
+        self.count = 0
+        return self.kthHelper(root, k)
 
 
-    def kthHelper(self, parent, k):
-        pass
+    def kthHelper(self, root, k):
+        # recursive case 1
+        if root.left != None:
+            temp = self.kthHelper(root.left, k)
+            # stops recursive call at leaf to traverse back up tree 
+            if temp != None:
+                return temp
 
+        self.count += 1
+        if self.count == k:
+            return root.val
 
+        # recursive case 2
+        if root.right != None:
+            temp = self.kthHelper(root.right, k)
+            # stops recursive call at leaf to traverse back up tree 
+            if temp != None:
+                return temp
 
+        # node is leaf, return None to pop up call stack
+        return None
 
 
 
