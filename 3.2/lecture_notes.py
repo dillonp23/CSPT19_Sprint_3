@@ -68,6 +68,11 @@ def maxDepth(root):
     return maxDepth
 
 
+# Implement a second solution using level-order
+def maxDepthBFS(root):
+    pass
+
+
 """
 Exercise: "230. Kth Smallest Element in a BST" (https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
 
