@@ -123,7 +123,7 @@ class Solution:
         self.min = inf
 
         # updates self.min from inf -> min height of tree
-        self.minDepthHelper(root, depth)
+        self.minDepthHelper(root, 1)
         
         # check if given an empty tree (no root)
         if self.min == inf:
