@@ -112,25 +112,29 @@ node. As a reminder, a leaf node is a node with no children.
 """
 
 # In order to use an instance variable,
-# LeetCode requires solution to be written as:
+# CodeSignal requires solution to be written as:
 def minimumDepthBinaryTree(root):
     return Solution().minimumDepth(root)
 
 
 class Solution:
     def minimumDepth(self, root):
-        if root is None:
-            return root
+        inf = float("inf")
+        self.min = inf
 
-        depth = 1
-        self.min = float("inf")
+        # updates self.min from inf -> min height of tree
         self.minDepthHelper(root, depth)
+        
+        # check if given an empty tree (no root)
+        if self.min == inf:
+            return 0
+
         return self.min
 
 
     def minDepthHelper(self, root, depth):
         if root is None:
-            return depth
+            return 0
 
         if root.left is None and root.right is None:
             self.min = min(self.min, depth)
@@ -143,9 +147,8 @@ class Solution:
 
 #  Alternate solution - use local min instead of instance var:
 def minimumDepth(root):
-    depth = 1
     curr_min = float("inf")
-    return minDepthHelper(root, depth, curr_min)
+    return minDepthHelper(root, 1, curr_min)
 
 
 def minDepthHelper(root, depth, curr_min):
