@@ -182,7 +182,13 @@ def minDepthHelper(root, depth, curr_min):
     - before appending a node, ensure it has both children
     - if node has both children, append node to queue
     - otherwise first node w/o children (i.e. first leaf) will be min depth
-        - return depth of that node
+        - return current depth of that node
+    - use two queues: one for current level nodes, and another for next level
+    - use a boolean variable to manage state
+    - when bool is false process nodes in current queue and append to next queue
+        - once curr queue is empty, set boolean to true and increment depth count
+    - when bool is true, pop nodes form next queue and append to current queue
+        - update to false once next queue is empty
 """
 from collections import deque
 
@@ -203,25 +209,18 @@ def iterativeMinDepth(root):
             temp = next_level.pop()
             curr_level.append(temp)
             
-            # once empty, process nodes (if any) in curr_level
             if len(next_level) == 0:
                 next = False
                 
         else:
             temp = curr_level.pop()
-
-            # check if node is a leaf
             if temp.left is None and temp.right is None:
                 return depth
-            
             if temp.left:
                 next_level.append(temp.left)
             if temp.right:
                 next_level.append(temp.right)
 
-            # after popping all items for current level
-            # update "next" to refill curr_level on next loop
-            # increment depth to match height of next level
             if len(curr_level) == 0 and len(next_level) > 0:
                 next = True
                 depth += 1
