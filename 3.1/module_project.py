@@ -144,25 +144,27 @@ class Solution:
 #  Alternate solution - use local min instead of instance var:
 def minimumDepth(root):
     depth = 1
-    min = float("inf")
-    return self.minDepthHelper(root, depth, min)
+    curr_min = float("inf")
+    return minDepthHelper(root, depth, curr_min)
 
 
-def minDepthHelper(self, root, depth, curr_min):
+def minDepthHelper(root, depth, curr_min):
     if root is None:
         return 0
 
     if root.left is None and root.right is None:
         return depth
 
-    lhs = self.minDepthHelper(root.left, depth + 1, curr_min)
-    rhs = self.minDepthHelper(root.right, depth + 1, curr_min)
+    lhs = minDepthHelper(root.left, depth + 1, curr_min)
+    rhs = minDepthHelper(root.right, depth + 1, curr_min)
 
-    # if lhs or rhs == 0 ==>> no node on that side
-    # use max(lhs, rhs) to get height of side that != 0 
+    # if lhs or rhs == 0 ==>> no node that side
+    # use max(lhs, rhs) instead of min to get min height
+    # min height in this case is the height of side != 0
     if lhs == 0 or rhs == 0:
         min_height = max(lhs, rhs)
     else:
+        # if lhs != 0 and rhs != 0, then min(lhs, rhs) will get min height
         min_height = min(lhs, rhs)
 
     return min(curr_min, min_height)
