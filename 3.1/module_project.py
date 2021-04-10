@@ -110,3 +110,16 @@ node. As a reminder, a leaf node is a node with no children.
     - if we're on right branch, we can terminate early once current depth is > self.min
         - i.e. we already know absolute min since we've already checked the left branch
 """
+class Solution:
+    def minimumDepthBinaryTree(root):
+        if root is None:
+            return root
+
+        depth = 1
+        self.min = depth
+        self.minDepthHelper(root, depth)
+        return self.min
+
+
+    def minDepthHelper(root, depth):
+        pass
