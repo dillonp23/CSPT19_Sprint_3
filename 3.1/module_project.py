@@ -171,3 +171,24 @@ def minDepthHelper(root, depth, curr_min):
         min_height = min(lhs, rhs)
 
     return min(curr_min, min_height)
+
+
+
+"""
+* Write an alternate solution to exercise 2 using an iterative/breadth-first approach
+
+* UPER - Plan:
+    - use a queue to append all nodes level-by-level
+    - before appending a node, ensure it has both children
+    - if node has both children, append node to queue
+    - otherwise first node w/o children (i.e. first leaf) will be min depth
+        - return depth of that node
+"""
+from collections import deque
+
+def iterativeMinDepth(root):
+    if root is None:
+        return 0
+
+    depth = 1
+    queue = deque()
