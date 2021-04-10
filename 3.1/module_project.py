@@ -138,3 +138,32 @@ class Solution:
 
         lhs = self.minDepthHelper(root.left, depth + 1)
         rhs = self.minDepthHelper(root.right, depth + 1)
+
+
+
+#  Alternate solution - use local min instead of instance var:
+def minimumDepth(root):
+    depth = 1
+    min = float("inf")
+    return self.minDepthHelper(root, depth, min)
+
+
+def minDepthHelper(self, root, depth, curr_min):
+    if root is None:
+        return 0
+
+    if root.left is None and root.right is None:
+        return depth
+    
+    lhs = self.minDepthHelper(root.left, depth + 1, curr_min)
+    rhs = self.minDepthHelper(root.right, depth + 1, curr_min)
+    
+    # if lhs or rhs is 0 then no node
+    # use opposite side and curr_min to get the min possible
+    if lhs == 0:
+        return min(rhs, curr_min)
+    elif rhs == 0:
+        return min(lhs, curr_min)
+    else:
+        min_height = min(lhs, rhs)
+        return min(curr_min, min_height)
