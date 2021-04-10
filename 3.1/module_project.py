@@ -96,4 +96,17 @@ node. As a reminder, a leaf node is a node with no children.
         /  \
        17   9
     your function should return its minimum depth = 2.
+
+
+* UPER - Plan:
+    * keywords: minimum, depth
+
+    - similar approach to the first exercise
+    - use a depth-first approach with post-order (since we care about the children first)
+    - depth is equal to number of nodes to leaf including root
+    - use recursion and pass root with a depth parameter
+    - use a self.min instance variable
+    - check left side for children first, if node is a leaf, self.min = min(depth, self.min)
+    - if we're on right branch, we can terminate early once current depth is > self.min
+        - i.e. we already know absolute min since we've already checked the left branch
 """
