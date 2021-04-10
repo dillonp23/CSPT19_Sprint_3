@@ -37,15 +37,19 @@ differ in height by a maximum of 1.
 
 
 * UPER - Plan:
-traverse tree using a breadth first approach
-at each level in tree, compare if there is a right and left child for nodes
-split children into two branches for each node
-no children
-    return
-one child
-    if its child also has a child return false
-both children
-    continue
+    * keywords: height-balanced, subtrees
+    
+    - when determining whether a root is balanced, we're interested in its children
+    - use a traversal that looks at a nodes children to make a determination about the node
+    - i.e. we'll use a recursive post-order traversal (children first)
+        - left, right, parent
+    
+    - if height diff between any 2 siblings is greater than 1, then tree is not balanced
+    - helper method will recursively iterate down the list in post-order fashion
+        - asserts each subtree of entire tree is balanced
+        - each node will return either a 0 or 1
+        - two children == 0, no children == 0, one child = 1
+        - i.e. no more than height diff of 1 between sibling nodes
 """
 
 class TreeNode:
@@ -56,26 +60,25 @@ class TreeNode:
 
 
 def balancedBinaryTree(root):
-    return isBalanced(root.left, root.right)
+    return isBalancedHelper(root) != -1
+    
 
-def isBalanced(left, right):
-    if not left and not right:
-        return True
+def isBalancedHelper(root):
+    if root is None:
+        return 0
 
-    if not left:
-        if right.left or right.right:
-            return False
+    if root.left is None and root.right is None:
+        return 1
 
-    if not right:
-        if left.left or left.right:
-            return False
 
-    if left:
-        return isBalanced(left.left, left.right)
+    left_side = isBalancedHelper(root.left)
+    right_side = isBalancedHelper(root.right)
 
-    if right:
-        return isBalanced(right.left, right.right)
+    if left_side == -1 or right_side == -1 or abs(left_side - right_side) > 1:
+        return -1
 
+
+    return max(left_side, right_side) + 1
 
 
 
