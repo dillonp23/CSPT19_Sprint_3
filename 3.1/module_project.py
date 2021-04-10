@@ -204,7 +204,7 @@ def iterativeMinDepth(root):
     next_level = deque()
     next = False
 
-    while len(curr_level) != 0 or len(next_level) != 0:
+    while len(curr_level) != 0 or next:
         if next == True:
             temp = next_level.pop()
             curr_level.append(temp)
