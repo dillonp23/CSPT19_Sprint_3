@@ -60,14 +60,25 @@ class TreeNode:
 
 
 def balancedBinaryTree(root):
-    pass
+    depth = 0
+    return isBalanced(root, depth) != -1
     
 
-def isBalancedHelper(root):
-    pass
+def isBalanced(root, depth):
+    if root is None:
+        return depth
+
+    lhs = isBalanced(root.left, depth + 1)
+    rhs = isBalanced(root.right, depth + 1)
+
+    if abs(lhs-rhs) > 1 or lhs == -1 or rhs == -1:
+        return -1
 
 
+    return max(lhs, rhs)
 
+
+    
 
 """
 Exercise 2: Minimum Depth Binary Tree
