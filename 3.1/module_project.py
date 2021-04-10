@@ -154,16 +154,15 @@ def minDepthHelper(self, root, depth, curr_min):
 
     if root.left is None and root.right is None:
         return depth
-    
+
     lhs = self.minDepthHelper(root.left, depth + 1, curr_min)
     rhs = self.minDepthHelper(root.right, depth + 1, curr_min)
-    
-    # if lhs or rhs is 0 then no node
-    # use opposite side and curr_min to get the min possible
-    if lhs == 0:
-        return min(rhs, curr_min)
-    elif rhs == 0:
-        return min(lhs, curr_min)
+
+    # if lhs or rhs == 0 ==>> no node on that side
+    # use max(lhs, rhs) to get height of side that != 0 
+    if lhs == 0 or rhs == 0:
+        min_height = max(lhs, rhs)
     else:
         min_height = min(lhs, rhs)
-        return min(curr_min, min_height)
+
+    return min(curr_min, min_height)
