@@ -191,4 +191,40 @@ def iterativeMinDepth(root):
         return 0
 
     depth = 1
-    queue = deque()
+    
+    curr_level = deque()
+    curr_level.append(root)
+    
+    next_level = deque()
+    next = False
+
+    while len(curr_level) != 0 or len(next_level) != 0:
+        if next == True:
+            temp = next_level.pop()
+            curr_level.append(temp)
+            
+            # once empty, process nodes (if any) in curr_level
+            if len(next_level) == 0:
+                next = False
+                
+        else:
+            temp = curr_level.pop()
+
+            # check if node is a leaf
+            if temp.left is None and temp.right is None:
+                return depth
+            
+            if temp.left:
+                next_level.append(temp.left)
+            if temp.right:
+                next_level.append(temp.right)
+
+            # after popping all items for current level
+            # update "next" to refill curr_level on next loop
+            # increment depth to match height of next level
+            if len(curr_level) == 0 and len(next_level) > 0:
+                next = True
+                depth += 1
+                
+
+    return depth
