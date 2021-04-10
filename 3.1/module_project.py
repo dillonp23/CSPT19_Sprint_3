@@ -4,7 +4,6 @@
 Sprint 3.1 CodeSignal Assignment - BST's & Binary Trees:
 
 
-
 * Exercise 1: Balanced Binary Tree
 
 You are given a binary tree and you need to write a function that can determine if it is height-balanced.
@@ -37,19 +36,20 @@ differ in height by a maximum of 1.
 
 
 * UPER - Plan:
-    * keywords: height-balanced, subtrees
+    * keywords: height-balanced, subtrees, children-first => post-order
     
     - when determining whether a root is balanced, we're interested in its children
-    - use a traversal that looks at a nodes children to make a determination about the node
+    - use a traversal that puts node * children-first * to make a determination about the node
     - i.e. we'll use a recursive post-order traversal (children first)
         - left, right, parent
     
     - if height diff between any 2 siblings is greater than 1, then tree is not balanced
     - helper method will recursively iterate down the list in post-order fashion
         - asserts each subtree of entire tree is balanced
-        - each node will return either a 0 or 1
-        - two children == 0, no children == 0, one child = 1
         - i.e. no more than height diff of 1 between sibling nodes
+        - if difference > 1 at any point, return a flag to terminate function
+            - use -1 as termination flag, since -1 is not a valid depth
+        - otherwise return max depth(left branch, right branch)
 """
 
 class TreeNode:
@@ -60,25 +60,11 @@ class TreeNode:
 
 
 def balancedBinaryTree(root):
-    return isBalancedHelper(root) != -1
+    pass
     
 
 def isBalancedHelper(root):
-    if root is None:
-        return 0
-
-    if root.left is None and root.right is None:
-        return 1
-
-
-    left_side = isBalancedHelper(root.left)
-    right_side = isBalancedHelper(root.right)
-
-    if left_side == -1 or right_side == -1 or abs(left_side - right_side) > 1:
-        return -1
-
-
-    return max(left_side, right_side) + 1
+    pass
 
 
 
