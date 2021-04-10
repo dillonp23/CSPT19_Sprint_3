@@ -111,6 +111,12 @@ node. As a reminder, a leaf node is a node with no children.
         - i.e. we already know absolute min since we've already checked the left branch
 """
 
+# In order to use an instance variable,
+# LeetCode requires solution to be written as:
+def minimumDepthBinaryTree(root):
+    return Solution().minimumDepth(root)
+
+
 class Solution:
     def minimumDepth(self, root):
         if root is None:
