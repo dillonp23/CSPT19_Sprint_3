@@ -52,10 +52,27 @@ class TreeNode:
         self.left = None
         self.right = None
 
+    def maxDepth(self, root):
+        if root is None:
+            return 0
+            
+        self.max = 0
+        self.maxDepthHelper(root, 1)
+        
+        return self.max
 
-def maxDepth(self, root):
-    pass
 
+    def maxDepthHelper(self, root, depth):
+        # base case : node is a leaf
+        if root.left is None and root.right is None:
+            self.max = max(self.max, depth)
+            return
+        
+        if root.left:
+            self.maxDepthHelper(root.left, depth+1)
+
+        if root.right:
+            self.maxDepthHelper(root.right, depth+1)
 
 
 
