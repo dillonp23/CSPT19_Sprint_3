@@ -170,4 +170,16 @@ Given a binary tree of integers t, return its node values in the following forma
     }
 
     output: [1, 2, 4, 3, 5]
+
+
+* UPER - Plan:
+    * keywords: root first, left to right
+
+    - breadth-first traversal -> use a queue and an iterative approach
+    - start with empty queue and append root
+    - use while loop with breaking condition being an empty queue
+    - pop a node, append its value to list, add any children to queue, move to next iteration/item in queue
+    - since we're simply returning a list with items ordered in standard breadth-first fashion, we only need a single queue/while loop
+    - use a deque to append items to one end and pop from the other
+    - return list of nodes values
 """
