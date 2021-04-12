@@ -259,3 +259,27 @@ Given a binary tree of integers, return all the paths from the tree's root to it
     - return a list of strings where each string = total path
     - when we reach a leaf, append new root val to string and append string to list
 """
+def treePaths(t):
+    return treePathsHelper(t, "", [])
+
+
+def treePathsHelper(t, curr_path, paths):
+    if t is None:
+        return paths
+    
+    if curr_path == "":
+        curr_path = f"{t.value}"
+    else:
+        curr_path = "->".join([curr_path, f"{t.value}"])
+
+    if t.left is None and t.right is None:
+        paths.append(curr_path)
+        return paths
+
+    if t.left != None:
+        treePathsHelper(t.left, curr_path, paths)
+
+    if t.right != None:
+        treePathsHelper(t.right, curr_path, paths)
+
+    return paths
