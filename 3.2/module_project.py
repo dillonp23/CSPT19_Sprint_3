@@ -264,22 +264,22 @@ def treePaths(t):
 
 
 def treePathsHelper(t, curr_path, paths):
+    # base case = no root/previous node has no children
     if t is None:
-        return paths
-    
-    if curr_path == "":
-        curr_path = f"{t.value}"
-    else:
-        curr_path = "->".join([curr_path, f"{t.value}"])
+        return
 
+    # add each node to path as we traverse down tree
+    if curr_path == "":
+        curr_path = str(t.value)
+    else:
+        curr_path = "->".join([curr_path, str(t.value)])
+
+    # append full path when we get to leaf
     if t.left is None and t.right is None:
         paths.append(curr_path)
-        return paths
-
-    if t.left != None:
+    else:
+        # use recursion to build path for left and right children
         treePathsHelper(t.left, curr_path, paths)
-
-    if t.right != None:
         treePathsHelper(t.right, curr_path, paths)
 
     return paths
