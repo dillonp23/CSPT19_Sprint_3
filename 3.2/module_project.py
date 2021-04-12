@@ -183,3 +183,20 @@ Given a binary tree of integers t, return its node values in the following forma
     - use a deque to append items to one end and pop from the other
     - return list of nodes values
 """
+from collections import deque
+
+def traverseTree(t):
+    res = []
+    queue = deque()
+    queue.appendleft(t)
+
+    while len(queue) > 0:
+        curr = queue.pop()
+        if curr:
+            res.append(curr.value)
+            if curr.left != None:
+                queue.appendleft(curr.left)
+            if curr.right != None:
+                queue.appendleft(curr.right)
+
+    return res
