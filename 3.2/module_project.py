@@ -98,3 +98,25 @@ You are given a binary tree. Write a function that returns the binary tree's nod
     - return a list with node values in-order (left->parent->right)
     - after we get to deepest left-most node append value, continue appending in proper order as stack unwinds
 """
+def binaryTreeInOrderTraversal(root):
+    node_vals = []
+    if root is None:
+        return node_vals
+
+    return inOrderTraversalHelper(root, node_vals)
+
+
+def inOrderTraversalHelper(root, node_vals):
+    if root.left is None and root.right is None:
+        node_vals.append(root.value)
+        return node_vals    
+        
+    if root.left != None:
+        inOrderTraversalHelper(root.left, node_vals)
+    
+    node_vals.append(root.value)
+    
+    if root.right != None:
+        inOrderTraversalHelper(root.right, node_vals)
+        
+    return node_vals
