@@ -246,4 +246,16 @@ Given a binary tree of integers, return all the paths from the tree's root to it
           2  -3
          / \
         10  4
+
+
+* UPER - Plan:
+    * keywords: paths, root to leaves
+
+    - we want to build a string for every path possible from root to a leaf
+    - use a depth-first approach in a pre-order fashion
+    - since we will be building the string as we go, we will first append new node to string 
+        and then pass the new string to next child (left first)
+    - at any parent node, the new string will be the same from root down to parent
+    - return a list of strings where each string = total path
+    - when we reach a leaf, append new root val to string and append string to list
 """
