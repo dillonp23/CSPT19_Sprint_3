@@ -3,7 +3,7 @@
 Sprint 3.2 - BST & Binary Tree Traversals CodeSignal Assignment
 
 
-Quiz 1: Tree Traversal Categories (task 1 of 9)
+Quiz: Tree Traversal Categories (tasks 1-6)
 
 * What are the two primary categories for tree traversal?
 
@@ -64,4 +64,26 @@ Quiz 1: Tree Traversal Categories (task 1 of 9)
             a. (reverse) level-order
                 - start with root, move level-by-level to leaves (or leaves to root)
                 - left side of tree to right side of tree
+"""
+
+
+
+
+
+"""
+Exercise 1: Binary tree in-order traversal (task 7 of 9)
+
+You are given a binary tree. Write a function that returns the binary tree's node values using an in-order traversal.
+
+* Example:
+
+    Input: [2,None,3,4]
+
+    2
+     \
+      3
+     /
+    4
+
+    Output: [2,4,3]
 """
