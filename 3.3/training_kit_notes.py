@@ -38,7 +38,7 @@ Objective 1: Introduction to Graphs
     
     * Types of Graphs
 
-        * Directed & Undirected Graphs
+        - Directed vs. Undirected Graphs
 
             a. directed
                 - single or bidirectional
@@ -46,7 +46,7 @@ Objective 1: Introduction to Graphs
                 - relationships between verts can be represented with arrows
                 - arrow between two nodes can be single direction or bi-directional
                 
-                * examples:
+                - examples:
                     - debt and money owed between different individuals
                     - map of roads within a city
                 
@@ -55,14 +55,14 @@ Objective 1: Introduction to Graphs
                 - mutual exchange
                 - represent relationships thay aren't necessarily a specific direction
 
-                * example:
+                - examples:
                     - personal connections between users
                         - user A and user B are 'friends', i.e. a mutual relationship
                         - wouldn't make much sense for a directional graph
                     - users who have exchanged goods/services with each other in the past
 
 
-        * Cyclic and Acyclic Graphs
+        - Cyclic vs. Acyclic Graphs
 
             a. cyclic
                 - able to start at a vert, and follow the edges back to starting point
@@ -71,7 +71,7 @@ Objective 1: Introduction to Graphs
                     - any undirected graph is automatically cyclic by definition
                         - you can always travel back along the same edge to starting point
                     
-                    example:
+                    - examples:
                         * = side that head of arrow for an edge is pointing to
                             i.e. B->*C, C->*E, E->*D, D->*B
 
@@ -92,7 +92,7 @@ Objective 1: Introduction to Graphs
                         - but if it is a directional graph, and both arrows are in same direction,
                             it makes it acyclic
 
-                    example:
+                    - examples:
                         * = side that head of arrow for an edge is pointing to
                             i.e. B->*C, B->*D, D->*E
 
@@ -102,4 +102,39 @@ Objective 1: Introduction to Graphs
 
                         ^ acyclic due to arrows between B, C, D, & E pointing same direction
                         - can't get back to starting vert as entire graph is directional from left->right
+
+
+        - Weighted Graphs
+
+            a. weighted
+                - weighted graphs have values associated with the edges
+                - we call these values "edge weights"
+                - weights represent different data in different graphs
+
+                - examples:
+                    - in a weighted graph representing a map, weights may represent lengths of roads
+                        - higher total weight of a route on map = longer distance
+                    - weights can help decide which particular path to take when comparing routes
+                    - can assign unnaturally large weights to paths we want to avoid
+                        - e.g. Google Maps uses this technique to avoid freeways for walking directions
+                        - avoid steep roads, or busy vehicle streets when planning bike routes
+
+                * "Djiksra's Algorithm" is a graph search variant that accounts for edge weights
+
+        
+        - Directed Acyclic Graphs (DAGs)
+            
+            a. DAGs
+                - directed graph with no cycles
+                - can order vertices linearly in a way that every edge directs from earlier to later in sequence
+                - useful for a number of different applications
+
+                - examples:
+                    - spreadsheet w/vertices representing cells & edges as a cell's formula using another cells value
+                    - milestones & activities of largescale projects w/topological ordering to optimize for time
+                    - collections of events and their influence on each other like family trees or version histories
+                        - e.g. Git uses a DAG to represent commits
+                        - a commit can have a child commit, or multiple child commits i.e. a branch
+                        - child can come from one parent commit (or two in the case of a merge conflict)
+                        - however there is no way to go back and form a loop in the git commit heirarchy
 """
