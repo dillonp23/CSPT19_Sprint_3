@@ -86,4 +86,15 @@ You are given a binary tree. Write a function that returns the binary tree's nod
     4
 
     Output: [2,4,3]
+
+
+* UPER - Plan:
+
+    * keywords: in-order => DFS
+
+    - use an iterative approach with a stack object or a recursive approach using the call stack
+    - start by getting left-most node of tree
+    - if no left subtree, start with root
+    - return a list with node values in-order (left->parent->right)
+    - after we get to deepest left-most node append value, continue appending in proper order as stack unwinds
 """
