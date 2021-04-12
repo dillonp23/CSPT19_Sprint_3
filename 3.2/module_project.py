@@ -200,3 +200,50 @@ def traverseTree(t):
                 queue.appendleft(curr.right)
 
     return res
+
+
+
+
+
+"""
+Exercise 3: Tree Paths (task 9 of 9)
+
+Given a binary tree of integers, return all the paths from the tree's root to its leaves as an array of strings. 
+
+* The strings should have the following format:
+    "root->node1->node2->...->noden"
+    
+    - representing path from root to node n, where root is the value stored in the root and node 1, node 2,..., node n are the values 
+        stored in the 1st, 2nd,..., and nth nodes in the path respectively (node n representing the leaf)
+
+* Example:
+    t = {
+    "value": 5,
+    "left": {
+        "value": 2,
+        "left": {
+            "value": 10,
+            "left": null,
+            "right": null
+        },
+        "right": {
+            "value": 4,
+            "left": null,
+            "right": null
+        }
+    },
+    "right": {
+        "value": -3,
+        "left": null,
+        "right": null
+        }
+    }
+
+    treePaths(t) = ["5->2->10", "5->2->4", "5->-3"]
+
+            5
+           / \
+          2  -3
+         / \
+        10  4
+"""
