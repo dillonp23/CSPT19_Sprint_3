@@ -41,7 +41,8 @@ Objective 1: Introduction to Graphs
         - Directed vs. Undirected Graphs
 
             a. directed
-                - single or bidirectional
+                - one-way or bidirectional edges
+                - at least one edge is not bi-directional
                 - data flows from one node to another
                 - relationships between verts can be represented with arrows
                 - arrow between two nodes can be single direction or bi-directional
@@ -137,4 +138,75 @@ Objective 1: Introduction to Graphs
                         - a commit can have a child commit, or multiple child commits i.e. a branch
                         - child can come from one parent commit (or two in the case of a merge conflict)
                         - however there is no way to go back and form a loop in the git commit heirarchy
+
+
+    
+    * Drawing Graphs
+
+        1. draw an undirected graph of 8 verts
+            - undirected == no arrows
+            - mutual exchange w/bi-directional edges
+
+            A----B----C----E
+             \   |    |   /
+              \  D----F  /
+               \ |  / | /
+                \G /  H/
+
+
+        2. draw a directed graph of 7 verts
+            - directed == arrows
+            - a directed graph has to have at least one edge that is not bidriectional
+
+            A-->B-->C-->E
+             \  |   |
+              \ D-->F
+               \|
+                G
+
+
+        3. draw a cyclic directed graph of 5 verts
+            - ensure it has at least one cycle
+
+            A-->B
+            |   |
+            C<--D<--E
+
+        
+        4. draw a directed acyclic graph (DAG) of 8 verts
+            - order vertices linearly such that every edge is directed from early to later in sequence
+            - will be using a linear sequence: A, B, C, D, E, F, G, H
+            - since its difficult to represent a DAG linearly in code, sequence will be on one line,
+                and edges will be denoted on the lines above and below sequence.
+                    - arrows on top line represent edges going over the top of verts, and bottom line under verts
+                    - vertical lines denote which vert an edge starts at
+                    - 'A' is the only vert with two edges originating from it
+
+
+            |-->|----->|-------->
+            A   B   C  D   E  F  G  H 
+            |------>|----->|->|---->
+
+
+        5. draw an undirected graph of 4 verts
+            - undirected = no arrows & all edges bidirectional exchange
+
+            A----B
+            |    |
+            |    |
+            C----D
+
+
+        6. draw a directed graph of 5 verts
+            - directed = at least a single one-way edge
+
+            A-----B---->D
+            \     |
+             E--->C
+
+
+
+    * Additional Resources Related to Graphs:
+        - https://medium.com/basecs/a-gentle-introduction-to-graph-theory-77969829ead8
+        - https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 """
