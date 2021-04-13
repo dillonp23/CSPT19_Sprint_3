@@ -189,3 +189,19 @@ print(myGraph)
     - traversals can be different each time
     - keep traversing until node doesn't have neighbors (dead-end) or or all neighbors have already been visited
 """
+from collections import deque
+def depthFirstTraversal(self, startingNode):
+    stack = deque()
+    stack.append(startingNode)
+    visited = set()
+
+    while len(stack) > 0:
+        currNode = stack.pop()
+
+        # need to labels nodes as having been visited
+        if currNode not in visited:
+            visited.add(currNode)
+            for neighbor in self.graph[currNode]:
+                stack.append(neighbor)
+
+    return visited
