@@ -210,3 +210,42 @@ Objective 1: Introduction to Graphs
         - https://medium.com/basecs/a-gentle-introduction-to-graph-theory-77969829ead8
         - https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 """
+
+
+
+
+"""
+Objective 2: Representing Graphs as Adjacency Lists or Matrices
+
+
+* Representing Graphs in Code
+    - need to understand what type of data will be stored, and what operations are necessary
+
+    1. Adjacency List
+        - utilizes a Dictionary and a Set
+        - outer dict contains each vert as the key, with the edges represented with a set
+        - using a set allows O(1) constant access to edges
+        - store graph as a list of vertices
+        - each vert holds a list of connected vertices
+
+
+    2. Adjacency Matrix
+        - represented by a two-dimensional array (a list of lists)
+        - allows for benefit of built-in edge weights
+        - 0 denotes no relationship between verts
+        - values != 0 represent edge labels or edge weights
+        - drawback is we do not have a built in association between vert values and their index
+
+
+    * Tradeoffs
+        - both implmentations have strengths and weaknesses
+
+        V = total # of vertices
+        E = total # of edges
+        e = average # of edges per vertex
+        
+        * space complexity
+            a. list: O(V+E)
+            
+            b. matrix: O(V^2)
+"""
