@@ -89,7 +89,7 @@ class Graph:
             self.addVertex(vert_1)
         if vert_2 not in self.vertices:
             self.addVertex(vert_2)
-        self.vertices[vert_1].addConnection(self.vertices[vert_2], weight)
+        self.vertices[vert_1].addConnection(vert_2, weight)
 
     def getVertices(self):
         return self.vertices.keys()
