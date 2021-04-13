@@ -550,3 +550,26 @@ test_graph.add_edge(20,10,12)
 test_graph.add_edge(20,40,28)
 
 print(test_graph)
+
+
+
+
+
+"""
+* Additional Notes, Practice and Review of Graphs
+
+    A. Adjacency Matrices
+
+        I. review
+            - even if a graph is sparse, adj. matrices still have high space complexity
+            - for very dense graphs, space complexity is similar for both adj. matrices & adj. lists
+                - adj. matrices might be a better choice for very dense graphs, since lists utilize
+                    space more efficiently than dictionaries and sets (even though all O(n))
+            
+            a. symmetric vs asymmetric:
+                i. undirected graphs ==>> adj. matrices are symmetric overall
+                    - row i column j entry == 1, if and only if, row j column i entry == 1
+
+                ii. directed graphs ==>> adj. matrices are asymmetric overall
+                    - some rows and columns may be symmetric if they have bi-directional edges
+"""
