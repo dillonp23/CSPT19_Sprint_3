@@ -381,3 +381,25 @@ Objective 2: Representing Graphs as Adjacency Lists or Matrices
         * Note: in most cases an adjacency list will be a better choice for representing graph data, but in
                 scenarios where graphs are weighted or very dense, a matrix could be better suited.
 """
+
+# Graph using adjacent list w/weighted edges, i.e. inner dict instead of a set ==> {verts: {edges: weight}}
+class GraphList:
+    def __init__(self):
+        self.vertices = {
+            "A": {"B", 1},
+            "B": {"C": 3, "D": 2},
+            "C": {},
+            "D": {},
+            "E": {"D": 1}
+        }
+
+# Graph implmentation using adjacent matrix ==> ability to store weighted edges comes built in w/ matrices
+class GraphMatrix:
+    def __init__(self):
+        self.edges = [
+            [0,1,0,0,0],
+            [0,0,3,2,0],
+            [0,0,0,0,0],
+            [0,0,0,0,0],
+            [0,0,0,1,0],
+        ]
