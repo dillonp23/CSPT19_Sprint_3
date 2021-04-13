@@ -238,14 +238,146 @@ Objective 2: Representing Graphs as Adjacency Lists or Matrices
 
 
     * Tradeoffs
-        - both implmentations have strengths and weaknesses
+        - both implmentations have different strengths and weaknesses and different time/space complexities
+        - generally speaking adj. lists are the preferred method as they enable many O(1) operations
+        - adj. lists make finding a verts neighbors more strightforward than matrices
+        - choosing a graph implementation is a case-by-case basis and depends on factors such as:
+            - the size/density of graph
+            - what you need to optimize for (space vs time)
+            - the properties of the data
+            - etc..
+
+        * NOTE: either graph implementation could contain more information by including Vertex and Edge classes
+
+ 
+    * Time & Space Complexity (Lists vs Matrices)
 
         V = total # of vertices
         E = total # of edges
         e = average # of edges per vertex
-        
-        * space complexity
-            a. list: O(V+E)
-            
-            b. matrix: O(V^2)
+
+
+        1. Adjacency Lists
+
+            i. space complexity:
+
+                * space (best case): O(V+E)
+                    - consider a sparse graph w/100 vertices and only one edge
+                    - an adj. list would store all 100 vertices but only need to store a set with one edge
+                    - in comparison, a matrix would need to store 100*100 (10,000) connections even though all but one are 0
+
+                * space (worst-case): O(V^2)
+                    - such as with very dense graphs
+                    - with dense graphs, lists and matrices both have similar space complexities
+
+
+            ii. time complexity:
+                
+                * add vertex: O(1)
+                    - simple operation for adj. list
+
+                        /* self.vertices["H"] = set() */
+
+                        
+                * remove vertex: O(V)
+                    - visit each vert and remove all edges pointing to deleted vert
+                    - removing elements from dict and sets is O(1) but visiting all verts makes it linear
+                    - removing is inefficient in both adj. lists and matrices, but slightly better in lists
+
+
+                * add edge: O(1)
+                    - efficient in both adj. lists and matrices
+                    
+                        /* self.vertices[v1].add(v2) */
+
+
+                * remove edge: O(1)
+                    - efficient in both adj. lists and matrices
+
+                        /* self.vertices[v1].remove(v2) */
+
+
+                * find edge: O(1)
+                    - efficient in both adj. lists and matrices
+
+                        /* return v2 in self.vertices[v1] */
+
+
+                * find all edges: O(1)
+                    - simply return the value for key that corresponds to vert in dict
+
+                        /* return self.vertex[v] */
+
+
+        2. Adjacency Matrices
+
+            i. space complexity:
+
+                * space: O(V^2)
+                    - consider a dense graph where all verts points to each other vert
+                    - dense graphs = high average # of edges per vertex
+                    - with very dense graphs, both lists and matrices will have comparable space complexities
+                    - in these scenarios a martix *might* be better suited
+                        - lists are more space efficient than dictionaries and sets
+
+
+            ii. time complexity:
+                
+                * add vertex: O(V)
+                    - add new vert to end of each existing row and add a new row
+                    - O(V) in average case
+                    - lists in Python have O(1) appends, but when the list is full, its an O(n) operation;
+                        therefore, in worst case scenario adding a vertex could be O(V^2) for adj. matrices
+
+                    /*  for v in self.edges:
+                            self.edges[v].append(0)
+                            v.append([0] * len(self.edges + 1)) 
+                    */
+                
+
+                * remove vertex: O(V^2)
+                    - first remove the verts row, then the column for vert in each row
+                    - requires moving everything in each list over, so ultimately quadratic time
+
+                
+                * add edge: O(1)
+                    - efficient in both adj. lists and matrices
+
+                        /* self.edges[v1][v2] = 1 */
+
+                
+                * remove edge: O(1)
+                    - efficient in both adj. lists and matrices
+
+                    /* self.edges[v1][v2] = 0 */
+
+
+                * find edge: O(1)
+                    - efficient in both adj. lists and matrices
+
+                        /* return self.edges[v1][v2] > 0 */
+
+
+                * find all edges: O(V)
+                    - more complicated in matrices than adj. lists
+                    - need to iterate through entire row and poulate a list of results
+
+                        /*  v_edges = []
+                            for v2 in self.edges[v]:
+                                if self.edges[v][v2] > 0:
+                                    v_edges.append(v2)
+                            return v_edges 
+                        */
+
+
+
+    * Time & Space Summary:
+
+                     space     addV    removeV   addEdge	removeEdge	findEdge	getEdges
+        1. Matrix:	 O(V^2)	   O(V)    O(V^2)	 O(1)	    O(1)	    O(1)	    O(V)
+        2. List:	 O(V+E)	   O(1)    O(V)	     O(1)	    O(1)	    O(1)	    O(1)
+
+
+        * Note: in most cases an adjacency list will be a better choice for representing graph data, but in
+                scenarios where graphs are weighted or very dense, a matrix could be better suited.
 """
