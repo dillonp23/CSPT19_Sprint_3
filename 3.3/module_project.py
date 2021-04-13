@@ -153,6 +153,26 @@ the possible paths from node 0, to node N - 1.
                 3: {4},
                 4: {}
             }
+
+
+* UPER - Plan:
+    * keywords: DAG, all paths, 0->N-1
+
+    - DAG so all connections == directed, and no cycle in graph
+    - input is a list of lists
+    - the outer list represents the number of nodes
+    - inner list represents the connections that each vertex has to another:
+
+        * vertices = {
+            0: input_list[0], 
+            1: input_list[1],
+            2: input_list[2],
+            3: input_list[3],
+            4: input_list[4]
+            }
+
+    - if 0th node has no conntections, then there is no possible path to node N-1
+        - i.e if input_list[0] == [] ===>> output = [] (empty list)
 """
 
 def findAllPaths(graph):
