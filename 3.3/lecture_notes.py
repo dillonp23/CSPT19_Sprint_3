@@ -74,4 +74,80 @@ I. Intro to Graphs:
 
         h. unweighted
             - no edge has an associated value with it
+
+
+
+    * Implementing graphs with adjacency lists
+        - comprised of an outer dictionary of verts as keys
+        - inner set containing the edges for the values
+        - adjacencyList[i] is a set of all the edges for vertex i
+
+        example: 
+        {
+            1: {2, 3},
+            2: {4},
+            3: {4},
+            4: {1}
+        }
+
+        ^ nodes 1-4 are the keys for dictionary
+        ^ edges for each vert contained w/in a set as values
+
+
+        * Time & Space Complexity
+            - Space: O(vertices2)
+            - Add vertex: O(1)
+            - Remove vertex: O(vertices)
+            - Add edge: O(1)
+            - Remove edge: O(1)
+            - Find edge: O(1)
+            - Get all edges: O(1)
 """
+# Graph class using adjacency lists
+class Graph:
+    def __init__(self):
+        self.graph = {}
+
+    def __repr__(self):
+        return str(self.graph)
+
+    def addNode(self, value):
+        if value not in self.graph:
+            self.graph[value] = set()
+
+    def removeNode(self, value):
+        if value in self.graph:
+            # remove the key for vert from outer dictionary
+            self.graph.pop(value)
+
+            # remove vert from any other set
+            for otherNode in self.graph:
+                if value in self.graph[otherNode]:
+                    self.graph[otherNode].remove(value)
+
+
+    def addEdge(self, fromNode, toNode):
+        self.graph[fromNode].add(toNode)
+
+    def removeEdge(self, fromNode, toNode):
+        self.graph[fromNode].remove(toNode)
+
+    def edgeExists(self, fromNode, toNode):
+        return toNode in self.graph[fromNode]
+
+
+myGraph = Graph()
+myGraph.addNode(1)
+myGraph.addNode(2)
+myGraph.addNode(3)
+myGraph.addNode(4)
+print(myGraph)
+myGraph.removeNode(2)
+print(myGraph)
+myGraph.addEdge(1, 3)
+myGraph.addEdge(4, 1)
+print(myGraph)
+myGraph.removeEdge(4, 1)
+print(myGraph.edgeExists(1,3))
+myGraph.removeNode(4)
+print(myGraph)
