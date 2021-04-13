@@ -472,3 +472,31 @@ We can use multiple dictionaries to implement the Graph abstract data type in Py
                 4. get_weight(self, otherVert)
                     - gets edge weight from this vert instance to another specified vert
 """
+class Vertex:
+    def __init__(self, value):
+        self.value = value
+        self.connections = {}
+    
+    def __str__(self):
+        return str(self.value) + ' connections: ' + str([x.value for x in self.connections])
+
+    def add_connection(self, vert, weight = 0):
+        self.connections[vert] = weight
+
+    def get_connections(self):
+        return self.connections.keys()
+
+    def get_value(self):
+        return self.value
+
+    def get_weight(self, otherVert):
+        return self.connections[otherVert]
+
+
+
+class Graph:
+    def __init__(self):
+        pass
+
+
+
