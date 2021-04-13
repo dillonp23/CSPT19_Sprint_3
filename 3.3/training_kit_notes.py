@@ -477,8 +477,8 @@ class Vertex:
         self.value = value
         self.connections = {}
     
-    def __str__(self):
-        return str(self.value) + ' connections: ' + str([x.value for x in self.connections])
+    def __repr__(self):
+        return "vertex: " + str(self.value) + ', connections: ' + str([x.value for x in self.connections])
 
     def add_connection(self, vert, weight = 0):
         self.connections[vert] = weight
@@ -505,6 +505,9 @@ class Graph:
     def __iter__(self):
         return iter(self.vertices.values())
 
+    def __repr__(self):
+        return "\n# of vertices in graph: " + str(self.count) + "\n" + "\n".join([str(vert) for vert in self.vertices.values()])
+
     def add_vertex(self, value):
         self.count += 1
         new_vert = Vertex(value)
@@ -520,3 +523,13 @@ class Graph:
 
     def get_vertices(self):
         return self.vertices.keys()
+
+
+
+
+test_graph = Graph()
+
+for i in range(10):
+    test_graph.add_vertex(i)
+
+print(test_graph)
