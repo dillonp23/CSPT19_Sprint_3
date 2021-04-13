@@ -204,6 +204,7 @@ def depthFirstTraversal(graph, startingNode):
 
     while len(stack) > 0:
         currNode = stack.pop()
+        print(currNode)
 
         # need to labels nodes as having been visited
         if currNode not in visited:
@@ -214,6 +215,21 @@ def depthFirstTraversal(graph, startingNode):
     return visited
 
 
+# depth-first using recursion
+def recursiveDepthFirst(graph, startingNode):
+    recursiveDepthFirstHelper(graph, startingNode, set())
+
+def recursiveDepthFirstHelper(graph, currNode, visited):
+    # when at a node, label v as dicovered
+    visited.add(currNode)
+    print(currNode)
+
+    # add neighbors, then traverse and visit neighbors
+    for neighbor in graph[currNode]:
+        if neighbor not in visited:
+            recursiveDepthFirstHelper(graph, neighbor, visited)
+
+
 # essentially the same as iterative depth-first
 def breadthFirstTraversal(graph, vert):
     queue = deque()
@@ -222,12 +238,10 @@ def breadthFirstTraversal(graph, vert):
 
     while len(queue) > 0:
         currNode = queue.popleft()
+        print(currNode)
 
         # need to labels nodes as having been visited
         if currNode not in visited:
             visited.add(currNode)
             for neighbor in self.graph[currNode]:
                 queue.append(neighbor)
-
-    return visited
-    
