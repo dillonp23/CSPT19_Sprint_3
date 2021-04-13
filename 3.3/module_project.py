@@ -105,3 +105,27 @@ new_graph.addEdge("B", "D", 2)
 new_graph.addEdge("E", "D", 1)
 print(new_graph)
 print("all vertices:", [str(vert) for vert in new_graph.vertices.keys()])
+
+
+
+
+
+"""
+Exercise 1 (task 5 of 5): Find all paths from vertex A to B
+
+You are given a directed acyclic graph (DAG) that contains N nodes. Write a function that can find all of
+the possible paths from node 0, to node N - 1.
+
+* Notes:
+    - graph[a] is a list of all nodes b for which the edge a -> b exists
+    - results must be returned in sorted order
+    - can use any built-in sort method on the results array at end of your function before returning
+
+* Example:
+
+    Input: graph = [[1, 2],[3],[3],[4],[]]
+    Output: [[0,1,3,4], [0,2,3,4]]
+"""
+
+def findAllPaths(graph):
+    pass
