@@ -496,7 +496,27 @@ class Vertex:
 
 class Graph:
     def __init__(self):
-        pass
+        self.vertices = {}
+        self.count = 0
 
+    def __contains__(self, vert):
+        return vert in self.vertices
 
+    def __iter__(self):
+        return iter(self.vertices.values())
 
+    def add_vertex(self, value):
+        self.count += 1
+        new_vert = Vertex(value)
+        self.vertices[value] = new_vert
+        return new_vert
+
+    def add_edge(self, fromVert, toVert, weight = 0):
+        if fromVert not in self.vertices:
+            self.add_vertex(fromVert)
+        if toVert not in self.vertices:
+            self.add_vertex(toVert)
+        self.vertices[fromVert].add_connection(toVert, weight)
+
+    def get_vertices(self):
+        return self.vertices.keys()
