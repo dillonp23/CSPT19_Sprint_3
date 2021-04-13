@@ -95,7 +95,7 @@ I. Intro to Graphs:
 
 
         * Time & Space Complexity
-            - Space: O(vertices2)
+            - Space: O(vertices^2)
             - Add vertex: O(1)
             - Remove vertex: O(vertices)
             - Add edge: O(1)
@@ -151,3 +151,41 @@ myGraph.removeEdge(4, 1)
 print(myGraph.edgeExists(1,3))
 myGraph.removeNode(4)
 print(myGraph)
+
+
+
+"""
+* Implementing graphs with adjacency matrices
+    - useful for weighted edges
+    - use a matrix to represent whether or not there exists an edge between two vertices
+    - matrix[i][j] is True if there exists an edge from vertex i to vertex j
+
+
+    * Time & Space Complexity w/ Matrices
+        - Space: O(vertices^2)
+        - Even in a sparse graph, but good for dense graphs b/c lists are space efficient
+        - Add vertex: O(vertices^2)
+        - Remove vertex: O(vertices^2)
+        - Add edge: O(1)
+        - Remove edge: O(1)
+        - Find edge: O(1)
+        - Get all edges: O(vertices)
+
+
+    * Adjacency Lists vs Matrices
+        - depends on density of graph and what we want to optimize for
+        - if optimizing for space, representing dense graphs with matrices may be better
+
+
+
+* Graph Traversals
+    - Depth-first and Breadth-first
+    - traversal = look at entire graph
+    - search = stop once we get to the vert we're instrested in
+
+
+* Depth-First Traversals
+    - traverse in a depth-ward motion using stack/recursion
+    - traversals can be different each time
+    - keep traversing until node doesn't have neighbors (dead-end) or or all neighbors have already been visited
+"""
