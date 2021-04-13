@@ -93,3 +93,15 @@ class Graph:
 
     def getVertices(self):
         return self.vertices.keys()
+
+
+
+print("\nAnswer to Quiz II:")
+new_graph = Graph()
+new_graph.addVertex("A")
+new_graph.addEdge("A", "B", 1)
+new_graph.addEdge("B", "C", 3)
+new_graph.addEdge("B", "D", 2)
+new_graph.addEdge("E", "D", 1)
+print(new_graph)
+print("all vertices:", [str(vert) for vert in new_graph.vertices.keys()])
