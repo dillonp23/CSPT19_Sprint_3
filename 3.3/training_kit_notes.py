@@ -478,7 +478,7 @@ class Vertex:
         self.connections = {}
     
     def __repr__(self):
-        return "vertex: " + str(self.value) + ', connections: ' + str([x.value for x in self.connections])
+        return "vertex: " + str(self.value) + ', connections: ' + str(self.connections)
 
     def add_connection(self, vert, weight = 0):
         self.connections[vert] = weight
@@ -526,10 +526,27 @@ class Graph:
 
 
 
+print("\nGraph & Vertices Implementation:")
 
+# expected: "vertex 1, connections: {toNode: weight}"
 test_graph = Graph()
-
-for i in range(10):
+for i in range(1, 11):
     test_graph.add_vertex(i)
+
+print(test_graph)
+
+test_graph.add_edge(1,3,3)
+test_graph.add_edge(8,7,2)
+test_graph.add_edge(1,3,4)
+test_graph.add_edge(2,2,1)
+test_graph.add_edge(5,2,3)
+test_graph.add_edge(5,3,1)
+test_graph.add_edge(9,10,8)
+
+print(test_graph)
+
+# add edge to vertices not yet in graph
+test_graph.add_edge(20,10,12)
+test_graph.add_edge(20,40,28)
 
 print(test_graph)
