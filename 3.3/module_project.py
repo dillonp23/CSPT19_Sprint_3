@@ -125,6 +125,34 @@ the possible paths from node 0, to node N - 1.
 
     Input: graph = [[1, 2],[3],[3],[4],[]]
     Output: [[0,1,3,4], [0,2,3,4]]
+
+        * visual representation:
+
+                0--->1
+                |    |
+                v    v
+                2--->3
+                     |
+                     v
+                     4
+
+
+        * visual (linear) representation:
+
+            |-->|------>|-->
+            0   1   2   3   4
+            |------>|--->
+
+
+        * adjacency list representation:
+
+            vertices = {
+                0: {1, 2},
+                1: {3},
+                2: {3},
+                3: {4},
+                4: {}
+            }
 """
 
 def findAllPaths(graph):
