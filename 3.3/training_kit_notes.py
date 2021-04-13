@@ -403,3 +403,72 @@ class GraphMatrix:
             [0,0,0,0,0],
             [0,0,0,1,0],
         ]
+
+
+
+
+"""
+Objective 3: Implementing User Defined Vertex & Graph Classes
+
+
+We can use multiple dictionaries to implement the Graph abstract data type in Python
+
+    * Two classes needed for this implementation:
+        - both classes will have methods needed to perform basic operations on our graph object
+
+        1. Graph
+            - use to keep track of vertices in our graph instance
+            - enables mapping of vert names to specific vert objects
+            - keeps a count of number of verts in our graph instance
+
+            * Instance variables:
+                1. vertices
+                    - dictionary of Vertex objects
+
+                2. count
+                    - number of verts contained in our graph instance
+
+
+            * Graph class method operations:
+                1. add_vertex(self, value)
+                    - initializes new Vertex object from value/data, increments self.count, adds to self.vertices
+
+                2. add_edge(self, vert1, vert2, weight = 0)
+                    - creates new connection between two vertices and specifies edge weight
+
+                3. get_vertices(self)
+                    - retrieves a list of all vertices in our graph
+                        - simply return self.vertices.keys()
+
+                4. __contains__(self, vert)
+                    - overrides built-in method to properly work with graph instance
+
+                5. __iter__(self)
+                    - overrides built-in method to return list of values for each vertex in our graph instance
+
+                
+
+        2. Vertex
+            - represents each vertex contained in our graph instance
+
+            * Instance variables:
+                1. value/data
+                    - value or whatever type of data the vert is storing 
+
+                2. connections
+                    - dictionary of other verts
+
+            
+            * Vertex class method operations:
+                1. add_connection(self, vert, weight = 0)
+                    - adds new vert (and weight if exists) to connections dictionary
+
+                2. get_connections(self)
+                    - retrieves all currently connected verts from this verts connections dict
+
+                3. get_value(self)
+                    - retrieves value/data stored in vert instance from vert.value (or vert.data)
+
+                4. get_weight(self, otherVert)
+                    - gets edge weight from this vert instance to another specified vert
+"""
