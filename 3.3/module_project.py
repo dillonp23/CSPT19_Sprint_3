@@ -195,7 +195,17 @@ def findAllPaths(graph):
 
 
 def findPathsHelper(graph, path, vert, res):
-    pass
+    for neighbor in graph[vert]:
+        new_path = path.copy()
+        new_path.append(neighbor)
+
+        if neighbor == len(graph) - 1:
+            res.append(new_path)
+            res.sort()
+        else:
+            findPathsHelper(graph, new_path, neighbor, res)
+
+    return res
 
 
 
@@ -203,3 +213,7 @@ print("\nExercise 1:")
 print(findAllPaths([])) # expected: []
 print(findAllPaths([[1],[2],[3],[]])) # expected: [[0, 1, 2, 3]]
 print(findAllPaths([[1],[2],[3],[4],[5],[]])) # expected: [[0, 1, 2, 3, 4, 5]]
+print(findAllPaths([[1,3,7],[7],[5],[5],[],[7],[],[]])) # expected: [[0, 1, 7], [0, 3, 5, 7], [0, 7]]
+print(findAllPaths([[1, 2],[3],[3],[]])) # expected: [[0, 1, 3], [0, 2, 3]]
+print(findAllPaths([[1, 2],[3],[3],[4],[5],[6, 8],[9],[9],[9],[]])) 
+# ^ test case 6 ==> expected: [[0, 1, 3, 4, 5, 6, 9], [0, 1, 3, 4, 5, 8, 9], [0, 2, 3, 4, 5, 6, 9], [0, 2, 3, 4, 5, 8, 9]]
