@@ -188,4 +188,18 @@ the possible paths from node 0, to node N - 1.
             - call recurisve func using updated vertex, and new temp path
 """
 def findAllPaths(graph):
+    if len(graph) == 0 or len(graph[0]) == 0:
+        return []
+
+    return findPathsHelper(graph, [0], 0, [])
+
+
+def findPathsHelper(graph, path, vert, res):
     pass
+
+
+
+print("\nExercise 1:")
+print(findAllPaths([])) # expected: []
+print(findAllPaths([[1],[2],[3],[]])) # expected: [[0, 1, 2, 3]]
+print(findAllPaths([[1],[2],[3],[4],[5],[]])) # expected: [[0, 1, 2, 3, 4, 5]]
