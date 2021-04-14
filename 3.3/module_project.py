@@ -155,7 +155,7 @@ the possible paths from node 0, to node N - 1.
             }
 
 
-* UPER - Plan:
+* UPER - Understand:
     * keywords: DAG, all paths, 0->N-1
 
     - DAG so all connections == directed, and no cycle in graph
@@ -171,9 +171,21 @@ the possible paths from node 0, to node N - 1.
             4: input_list[4]
             }
 
-    - if 0th node has no conntections, then there is no possible path to node N-1
+    - if 0th node has no connections, then there is no possible path to node N-1
         - i.e if input_list[0] == [] ===>> output = [] (empty list)
-"""
 
+* UPER - Plan:
+    - check len(graph) and len(graph[0]), if either == 0, terminate early & return empty list
+    - if both len > 0 use a recursive helper function and return the result of that func
+    
+    - recursive func takes in graph, current path, current vertex, and a result array
+    - use a for loop to get the connections for the current vertex in graph
+        - copy the current path to a new temp path array
+        - append the next vertex
+        - check if the next vertex is the last vertex in graph
+            - if so, append the temp path to result array
+        - else:
+            - call recurisve func using updated vertex, and new temp path
+"""
 def findAllPaths(graph):
     pass
