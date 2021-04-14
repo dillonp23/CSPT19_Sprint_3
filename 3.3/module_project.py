@@ -209,11 +209,66 @@ def findPathsHelper(graph, path, vert, res):
 
 
 
+from collections import deque
+
+def findAllPathsIteratively(graph):
+    pass
+
+
+
+
 print("\nExercise 1:")
-print(findAllPaths([])) # expected: []
-print(findAllPaths([[1],[2],[3],[]])) # expected: [[0, 1, 2, 3]]
-print(findAllPaths([[1],[2],[3],[4],[5],[]])) # expected: [[0, 1, 2, 3, 4, 5]]
-print(findAllPaths([[1,3,7],[7],[5],[5],[],[7],[],[]])) # expected: [[0, 1, 7], [0, 3, 5, 7], [0, 7]]
-print(findAllPaths([[1, 2],[3],[3],[]])) # expected: [[0, 1, 3], [0, 2, 3]]
-print(findAllPaths([[1, 2],[3],[3],[4],[5],[6, 8],[9],[9],[9],[]])) 
-# ^ test case 6 ==> expected: [[0, 1, 3, 4, 5, 6, 9], [0, 1, 3, 4, 5, 8, 9], [0, 2, 3, 4, 5, 6, 9], [0, 2, 3, 4, 5, 8, 9]]
+
+print("\nTest 1:")
+test_1 = []
+test_1a = findAllPaths(test_1)
+test_1b = findAllPathsIteratively(test_1)
+print(test_1a)
+print(test_1b)
+assert test_1a == test_1b
+# expected: []
+
+print("\nTest 2:")
+test_2 = [[1],[2],[3],[]]
+test_2a = findAllPaths(test_2)
+test_2b = findAllPathsIteratively(test_2)
+print(test_2a)
+print(test_2b)
+assert test_2a == test_2b
+# expected: [[0, 1, 2, 3]]
+
+print("\nTest 3:")
+test_3 = [[1],[2],[3],[4],[5],[]]
+test_3a = findAllPaths(test_3)
+test_3b = findAllPathsIteratively(test_3)
+print(test_3a)
+print(test_3b)
+assert test_3a == test_3b
+# expected: [[0, 1, 2, 3, 4, 5]]
+
+print("\nTest 4:")
+test_4 = [[1,3,7],[7],[5],[5],[],[7],[],[]]
+test_4a = findAllPaths(test_4)
+test_4b = findAllPathsIteratively(test_4)
+print(test_4a)
+print(test_4b)
+assert test_4a == test_4b
+# expected: [[0, 1, 7], [0, 3, 5, 7], [0, 7]]
+
+print("\nTest 5:")
+test_5 = [[1, 2],[3],[3],[]]
+test_5a = findAllPaths(test_5)
+test_5b = findAllPathsIteratively(test_5)
+print(test_5a)
+print(test_5b)
+assert test_5a == test_5b
+# expected: [[0, 1, 3], [0, 2, 3]]
+
+print("\nTest 6:")
+test_6 = [[1, 2],[3],[3],[4],[5],[6,8],[9],[9],[9],[]]
+test_6a = findAllPaths(test_6)
+test_6b = findAllPathsIteratively(test_6)
+print(test_6a)
+print(test_6b)
+assert test_6a == test_6b
+# test case 6 ==> expected: [[0, 1, 3, 4, 5, 6, 9], [0, 1, 3, 4, 5, 8, 9], [0, 2, 3, 4, 5, 6, 9], [0, 2, 3, 4, 5, 8, 9]]
