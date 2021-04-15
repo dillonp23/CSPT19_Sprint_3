@@ -208,7 +208,7 @@ def findPathsHelper(graph, path, vert, res):
     return res
 
 
-
+# Second solution using iterative approach w/a queue
 from collections import deque
 
 def findAllPathsIteratively(graph):
@@ -244,58 +244,91 @@ def findAllPathsIteratively(graph):
 
 
 
+# A simplified/alternate recursive solution
+def findAllPathsToEnd(graph):
+    if len(graph) == 0 or len(graph[0]) == 0:
+        return []
+
+    end = len(graph)-1
+    return findAllPathsToEndHelper(graph, 0, end, [0], [])
+
+
+def findAllPathsToEndHelper(graph, vert, end, temp, res):
+    if vert == end:
+        res.append(temp.copy())
+    else:
+        for otherVert in graph[vert]:
+            temp.append(otherVert)
+            findAllPathsToEndHelper(graph, otherVert, end, temp, res)
+            temp.pop()
+            
+    return res
+
+
 print("\nExercise 1:")
 
 print("\nTest 1:")
 test_1 = []
 test_1a = findAllPaths(test_1)
 test_1b = findAllPathsIteratively(test_1)
+test_1c = findAllPathsToEnd(test_1)
 print(test_1a)
 print(test_1b)
-assert test_1a == test_1b
+print(test_1c)
+assert test_1a == test_1b and test_1a == test_1c
 # expected: []
 
 print("\nTest 2:")
 test_2 = [[1],[2],[3],[]]
 test_2a = findAllPaths(test_2)
 test_2b = findAllPathsIteratively(test_2)
+test_2c = findAllPathsToEnd(test_2)
 print(test_2a)
 print(test_2b)
-assert test_2a == test_2b
+print(test_2c)
+assert test_2a == test_2b and test_2a == test_2c
 # expected: [[0, 1, 2, 3]]
 
 print("\nTest 3:")
 test_3 = [[1],[2],[3],[4],[5],[]]
 test_3a = findAllPaths(test_3)
 test_3b = findAllPathsIteratively(test_3)
+test_3c = findAllPathsToEnd(test_3)
 print(test_3a)
 print(test_3b)
-assert test_3a == test_3b
+print(test_3c)
+assert test_3a == test_3b and test_3a == test_3c
 # expected: [[0, 1, 2, 3, 4, 5]]
 
 print("\nTest 4:")
 test_4 = [[1,3,7],[7],[5],[5],[],[7],[],[]]
 test_4a = findAllPaths(test_4)
 test_4b = findAllPathsIteratively(test_4)
+test_4c = findAllPathsToEnd(test_4)
 print(test_4a)
 print(test_4b)
-assert test_4a == test_4b
+print(test_4c)
+assert test_4a == test_4b and test_4a == test_4c
 # expected: [[0, 1, 7], [0, 3, 5, 7], [0, 7]]
 
 print("\nTest 5:")
 test_5 = [[1, 2],[3],[3],[]]
 test_5a = findAllPaths(test_5)
 test_5b = findAllPathsIteratively(test_5)
+test_5c = findAllPathsToEnd(test_5)
 print(test_5a)
 print(test_5b)
-assert test_5a == test_5b
+print(test_5c)
+assert test_5a == test_5b and test_5a == test_5c
 # expected: [[0, 1, 3], [0, 2, 3]]
 
 print("\nTest 6:")
 test_6 = [[1, 2],[3],[3],[4],[5],[6,8],[9],[9],[9],[]]
 test_6a = findAllPaths(test_6)
 test_6b = findAllPathsIteratively(test_6)
+test_6c = findAllPathsToEnd(test_6)
 print(test_6a)
 print(test_6b)
-assert test_6a == test_6b
+print(test_6c)
+assert test_6a == test_6b and test_6a == test_6c
 # test case 6 ==> expected: [[0, 1, 3, 4, 5, 6, 9], [0, 1, 3, 4, 5, 8, 9], [0, 2, 3, 4, 5, 6, 9], [0, 2, 3, 4, 5, 8, 9]]
