@@ -70,3 +70,45 @@ node i to node graph[i][j]).
     - keep track of path we're currently on
     - once we encounter last node, return the path we took to get there
 """
+from collections import deque, defaultdict
+
+def allPathsSourceTarget(graph):
+    destination = len(graph) - 1
+    graph = buildGraph(graph)
+    stack = deque()
+    stack.append((0, [0]))
+    res = []
+
+    while len(stack) > 0:
+        curr = stack.pop()
+        currNode, currPath = curr[0], curr[1]
+
+        if currNode == destination:
+            res.append(currPath)
+        else:
+            for neighbor in graph[currNode]:
+                newPath = currPath.copy()
+                newPath.append(neighbor)
+                stack.append((neighbor, newPath))
+
+    return res
+
+
+# Auxillary function to build a graph (not needed, but covered it in class)
+def buildGraph(edges):
+    graph = defaultdict(set)
+    for (node, neighbors) in enumerate(edges):
+        for neighbor in neighbors:
+            graph[node].add(neighbor)
+    return graph
+
+
+
+print("\nExercise 1 - Iterative Depth-First Traversal:")
+print(allPathsSourceTarget([])) # expected: []
+print(allPathsSourceTarget([[1],[2],[3],[]])) # expected: [[0, 1, 2, 3]]
+print(allPathsSourceTarget([[1],[2],[3],[4],[5],[]])) # expected: [[0, 1, 2, 3, 4, 5]]
+print(allPathsSourceTarget([[1,3,7],[7],[5],[5],[],[7],[],[]])) # expected: [[0, 1, 7], [0, 3, 5, 7], [0, 7]]
+print(allPathsSourceTarget([[1, 2],[3],[3],[]])) # expected: [[0, 1, 3], [0, 2, 3]]
+print(allPathsSourceTarget([[1, 2],[3],[3],[4],[5],[6,8],[9],[9],[9],[]]))
+# ^ test case 6 ==> expected: [[0, 1, 3, 4, 5, 6, 9], [0, 1, 3, 4, 5, 8, 9], [0, 2, 3, 4, 5, 6, 9], [0, 2, 3, 4, 5, 8, 9]]
