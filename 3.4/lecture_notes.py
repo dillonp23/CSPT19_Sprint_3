@@ -163,14 +163,38 @@ At the end, return the modified image.
 * Example:
 
     Input: 
-    image = [[1,1,1],[1,1,0],[1,0,1]]
+    image = [[1,1,1],
+             [1,1,0],
+             [1,0,1]]
     sr = 1, sc = 1, newColor = 2
+    * startingRow = 1, startingColumn = 1
 
-    Output: [[2,2,2],[2,2,0],[2,0,1]]
+    Output: [[2,2,2],
+             [2,2,0],
+             [2,0,1]]
 
     Explanation: 
     From the center of the image (with position (sr, sc) = (1, 1)), all pixels connected 
     by a path of the same color as the starting pixel are colored with the new color.
     Note the bottom corner is not colored 2, because it is not 4-directionally connected
     to the starting pixel.
+
+
+
+* UPER - Understand:
+    - flood fill = change all adjacent pixels that are up/down/left/right (but not diagonally) to new color
+    - think of the paint bucket tool, when you touch the bucket to change the color of a large area of same color
+
+
+* UPER - Graph Specific Questions:
+    1. not exactly like a graph, but its a matrix and very similar
+        - vertex = element in matrix (at intersection of row and column)
+        - edges = elements directly next to it - left/right/up/down
+
+    2. no need to build a graph representation, we can just traverse the actual matrix
+
+    3. traversal doesn't matter in this case
+        - traverse from origin point and change all neighbors that have the same color as starting vert
 """
+def floodFill(image):
+    pass
