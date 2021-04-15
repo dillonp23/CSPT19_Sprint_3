@@ -112,3 +112,33 @@ print(allPathsSourceTarget([[1,3,7],[7],[5],[5],[],[7],[],[]])) # expected: [[0,
 print(allPathsSourceTarget([[1, 2],[3],[3],[]])) # expected: [[0, 1, 3], [0, 2, 3]]
 print(allPathsSourceTarget([[1, 2],[3],[3],[4],[5],[6,8],[9],[9],[9],[]]))
 # ^ test case 6 ==> expected: [[0, 1, 3, 4, 5, 6, 9], [0, 1, 3, 4, 5, 8, 9], [0, 2, 3, 4, 5, 6, 9], [0, 2, 3, 4, 5, 8, 9]]
+
+
+def allPathsSourceTargetRecursive(graph):
+    res = []
+    if len(graph) == 0:
+        return res
+    
+    return allPathsHelper(graph, 0, len(graph)-1, [0], res)
+
+
+def allPathsHelper(graph, currNode, destNode, currPath, res):
+    if currNode == destNode:
+        res.append((currPath))
+    else:
+        for neighbor in graph[currNode]:
+            newPath = currPath.copy()
+            newPath.append(neighbor)
+            allPathsHelper(graph, neighbor, destNode, newPath, res)
+
+    return res
+
+
+
+print("\nExercise 1 - Iterative Depth-First Recursive:")
+print(allPathsSourceTargetRecursive([])) # expected: []
+print(allPathsSourceTargetRecursive([[1],[2],[3],[]])) # expected: [[0, 1, 2, 3]]
+print(allPathsSourceTargetRecursive([[1],[2],[3],[4],[5],[]])) # expected: [[0, 1, 2, 3, 4, 5]]
+print(allPathsSourceTargetRecursive([[1,3,7],[7],[5],[5],[],[7],[],[]])) # expected: [[0, 1, 7], [0, 3, 5, 7], [0, 7]]
+print(allPathsSourceTargetRecursive([[1, 2],[3],[3],[]])) # expected: [[0, 1, 3], [0, 2, 3]]
+print(allPathsSourceTargetRecursive([[1, 2],[3],[3],[4],[5],[6,8],[9],[9],[9],[]]))
