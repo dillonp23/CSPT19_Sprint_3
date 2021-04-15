@@ -57,5 +57,16 @@ node i to node graph[i][j]).
 
     Input: graph = [[1,3],[2],[3],[]]
     Output: [[0,1,2,3],[0,3]]
-"""
 
+
+
+* UPER - Graph Specific Questions:
+    1. vertices = graph[i], edges = graph[i][j], no weights
+    2. we don't need to build this graph ourselves and we can just use the input data as is
+    3. DFS or BFS doesn't matter in this case as long as we traverse all possible paths
+
+
+* UPER - Plan:
+    - keep track of path we're currently on
+    - once we encounter last node, return the path we took to get there
+"""
