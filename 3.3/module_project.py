@@ -212,8 +212,35 @@ def findPathsHelper(graph, path, vert, res):
 from collections import deque
 
 def findAllPathsIteratively(graph):
-    pass
+    if len(graph) == 0:
+        return []
 
+    last = len(graph) - 1
+    res = []
+
+    queue = deque()
+    queue.append(([0], graph[0]))
+
+    while len(queue) > 0:
+        popped = queue.popleft()
+
+        path = popped[0]
+        nums = popped[1]
+
+        for neighbor in nums:
+            new_path = path.copy()
+            new_path.append(neighbor)
+
+            if neighbor == last:
+                res.append(new_path)
+            else:
+                queue.append((new_path, graph[neighbor]))
+
+
+    # sort output list to pass assertions below
+    res.sort()
+
+    return res
 
 
 
