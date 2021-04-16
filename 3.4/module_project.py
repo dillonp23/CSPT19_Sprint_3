@@ -57,17 +57,46 @@ You need to write a function that can output the total number of friend circles 
         - we can use the input data as-is since it is in the form of an adjacency matrix
 
     3. How to traverse/search - DFS or BFS?
-        - we want to visit as many vertices as possible
-        - we'll use a DFS to traverse all paths and determine whether there are paths connecting all N number of students
+        - we want to get all possible friends for each student
+        - we'll use a BFS to traverse all each row and determine whether the student has any friends
         - if all students are connected (either directly or in directly) there will only be 1 friend circle
-        - otherwise any students with no overlap will count as a separate circle (even if just one individual)
+        - on the flipside if any student has 0 connections it will count as a single circle (even if just one individual)
 
 * UPER - Plan:
-    - use a DFS search to traverse edges between students
-    - if there is a path from student 0 to student N-1, then there is only one friend circle
-    - once we have traversed all possible paths (i.e. all students in visited set), this will be counted as 1 circle
-    - the number of additional circles will be defined as the count of remaining students (if no overlap between), 
-        or the number of other circles that can be made if other students outside first circle do share overlap
+    - use a BFS to traverse each row corresponding to a single student
+    - if there is a '1' in the j column (as long as i != j), then *set* matrix[j] as a friend
+    - we can store each circle of friends as a set
+    - if martix[i][j] has a friend, we will see if that friend is already in other set, if so add it, otheriwse start new set
+    - after all students have been visited, the number of circles will be equal to the number of sets
+
+
+    - add all students to a queue
+    - iterate through each of the students and find their friends (if any)
+    - if student has a friend either add to a current set, or start a new one
+
+    - total_students_count = len(matrix) - 1
+    - i = 0
+    - j = 0
+    - friend_count = 0
+
+    while len(queue) > 0:
+        1. if matrix[i][j] == 1:  
+            if i != j:
+                - add j to a set or start new set with set(i,j) as this is a friendship
+                friend_count += 1
+
+            ** if i does equal j, just continue
+                - means were at the '1' referring to current student themself
+        2. else:
+            (check if at least one possible friend for current student)
+            - if j == total_students_count:
+                - if matrix[i][j] == 0 and friend_count == 0:  <--- (student shares no friends)
+                    - increment total_circles += 1
+                    
+                - i += 1 ==> (increment to next student)
+                - j = 0 ==> (reset j)
+            else:
+                - j += 1
 """
 
 
