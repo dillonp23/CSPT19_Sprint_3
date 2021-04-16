@@ -36,4 +36,36 @@ You need to write a function that can output the total number of friend circles 
 
     * Explanation: The 0th and 1st students are direct friends, the 1st and 2nd students are direct friends, 
     so the 0th and 2nd students are indirect friends. All of them are in the same friend circle, so return 1.
+
+
+
+* UPER - Understand:
+        * keywords: "friend circle", transitive, direct/indirect friend, total circles
+
+        - "friend circle" = a person, their friends, their friends' friends, etc...
+                - since we're given a matrix, overlap between rows/colums will determine a circle
+
+* UPER - Graph specific questions:
+        1. translate into graph terminology
+                - rows in matrix define a single student
+                - columns of matrix define the relationships they have
+                - overlap between a row & column, where the two students have a '1' == "direct friends"
+                - an "indirect friend" == two students that don't have an overlapping 1, but instead share a common
+                        friend in between that links the two students together
+
+        2. how would you build a graph?
+                - we can use the input data as-is since it is in the form of an adjacency matrix
+
+        3. How to traverse/search - DFS or BFS?
+                - we want to visit as many vertices as possible
+                - we'll use a DFS to traverse all paths and determine whether there are paths connecting all N number of students
+                - if all students are connected (either directly or in directly) there will only be 1 friend circle
+                - otherwise any students with no overlap will count as a separate circle (even if just one individual)
+
+* UPER - Plan:
+        - use a DFS search to traverse edges between students
+        - if there is a path from student 0 to student N-1, then there is only one friend circle
+        - once we have traversed all possible paths (i.e. all students in visited set), this will be counted as 1 circle
+                - the number of additional circles will be defined as the count of remaining students (if no overlap between), 
+                or the number of other circles that can be made if other students outside first circle do share overlap
 """
