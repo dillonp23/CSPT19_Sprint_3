@@ -70,8 +70,22 @@ You need to write a function that can output the total number of friend circles 
          or the number of other circles that can be made if other students outside first circle do share overlap
 """
 def csFriendCircles(M):
-    pass
+    student_count = len(M)
+    visited = set()
 
+    def traverse(row):
+        for student, res in enumerate(M[row]):
+            if res == 1 and student not in visited:
+                visited.add(student)
+                traverse(student)
+
+    count = 0
+    for student in range(student_count):
+        if student not in visited:
+            traverse(student)
+            count += 1
+
+    return count
 
 
 
