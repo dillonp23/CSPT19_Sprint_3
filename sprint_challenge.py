@@ -113,3 +113,30 @@ graph[a] is a list of all nodes b for which the edge a -> b exists.
     Input: graph = [[1, 2],[3],[3],[4],[]]
     Output: [[0,1,3,4], [0,2,3,4]]
 """
+def csFindAllPathsFromAToB(graph):
+    res = []
+    path = [0]
+    start = 0
+    last = len(graph)-1
+    
+    if len(graph) == 0 or len(graph[0]) == 0:
+        return res
+
+    return findAllPathsHelper(graph, start, last, path, res)
+    
+
+def findAllPathsHelper(graph, vert, last, path, result):
+    for neighbor in graph[vert]:
+        new_path = path.copy()
+        new_path.append(neighbor)
+    
+        # check if neighbor is last node
+        if neighbor == last:
+            result.append(new_path)
+            result.sort()
+        else:
+        # continue recursively
+            findAllPathsHelper(graph, neighbor, last, new_path, result)
+        
+    
+    return result
