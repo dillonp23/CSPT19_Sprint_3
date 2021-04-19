@@ -55,3 +55,26 @@ def csBSTRangeSum(root, lower, upper):
             sum += csBSTRangeSum(root.right, lower, upper)
         
     return sum
+
+
+
+
+"""
+Exercise 2: Given a binary tree, write a function that inverts the tree.
+
+Example:
+
+    Input:
+         6
+       /   \
+      4     8
+     / \   / \
+    2   5 7   9
+
+    Output:
+         6
+       /   \
+      8     4
+     / \   / \
+    9   7 5   2
+"""
