@@ -25,7 +25,33 @@ The BST is guaranteed to have unique values.
         root = [10,5,15,3,7,13,18,1,null,6]
         lower = 6
         upper = 10
-        
+
     Output:
         23
+
+
+* UPER - Plan:
+    * keywords: BST, inclusive, sum, all values
+
+    - use properties of BST's that we know:
+        - left < parent < right
+        - we can eliminate values by comparing if a node is in the given range or not
+    - use a pre-order DFS
+    - if curr_node is greater than upper bound of range, traverse to left
+    - if curr_node is less than lower bound of range traverse to right
+    - if curr_node in range, begin summing up nodes until outside of range
 """
+def csBSTRangeSum(root, lower, upper):
+    sum = 0
+    
+    if root != None:
+        if lower <= root.value and root.value <= upper:
+            sum += root.value
+            
+        if lower <= root.value:
+            sum += csBSTRangeSum(root.left, lower, upper)
+            
+        if root.value <= upper:
+            sum += csBSTRangeSum(root.right, lower, upper)
+        
+    return sum
